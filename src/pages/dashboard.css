@@ -1,0 +1,18 @@
+.dashboard {
+  padding-top: 20vh;
+  padding-bottom: 10vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+.card {
+  width: 200px;
+  float: right;
+  margin: 2%;
+}
+.card:hover {
+  animation: pulse;
+  animation-duration: 1s;
+}
+.card-text {
+  text-align: center;
+}
