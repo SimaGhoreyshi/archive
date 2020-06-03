@@ -8,7 +8,7 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="navbar-expand" id="navbarNav">
         <ul className="navbar-nav">
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
             <Link
               className="nav-link dropdown-toggle"
               to="#"
@@ -41,8 +41,8 @@ const NavBar = () => {
               داشبورد<span className="sr-only"></span>
             </NavLink>
           </li>
-          <li class="nav-item dropdown">
-            <Link
+          <li className="nav-item dropdown">
+            <NavLink
               className="nav-link dropdown-toggle"
               to="#"
               id="navbarDropdownMenuLink"
@@ -51,26 +51,26 @@ const NavBar = () => {
               aria-expanded="false"
             >
               کاربران
-            </Link>
+            </NavLink>
             <div
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/create-user">
                 اپراتور جدید
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/users">
                 مدیریت اپراتورها
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 مدیریت دانشجویان
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 ثبت دانشجویان با اکسل
               </Link>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
             <Link
               className="nav-link dropdown-toggle"
               to="#"

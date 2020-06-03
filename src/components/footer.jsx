@@ -14,10 +14,10 @@ class Footer extends Component {
           overflowX: "hidden !important",
         }}
       >
-        <footer class="footer">
-          <div class="container">
+        <footer className="footer">
+          <div className="container">
             <p
-              class="text-muted"
+              className="text-muted"
               style={{ paddingTop: ".5%", textAlign: "end" }}
             >
               © 2015 Copyright.

@@ -8,22 +8,34 @@ import Areas from "./pages/areas";
 import Dashboard from "./pages/dashboard";
 import UserInfo from "./pages/user-info";
 import Footer from "./components/footer";
-import Users from "./pages/users";
 import Reports from "./pages/reports";
+import CreateUser from "./pages/create-user";
+import EditUser from "./pages/edit-user";
+import UsersList from "./pages/users-list";
 
 function App() {
   return (
     <React.Fragment>
       <NavBar />
-      <Switch>
-        <Route path="/areas" component={Areas} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/users" component={Users} />
-        <Route path="/reports" component={Reports} />
-        <Route path="/user-info" component={UserInfo} />
-        <Redirect exact from="/" to="/user-info" />
-        <Redirect t="/not-found" />
-      </Switch>
+      <br />
+      <br />
+      <br />
+      <div className="container">
+        <Switch>
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/users" component={UsersList} />
+          <Route path="/create-user" component={CreateUser} />
+          <Route path="/edit-user" component={EditUser} />
+
+          <Route path="/reports" component={Reports} />
+          <Route path="/user-info" component={UserInfo} />
+          <Route path="/areas" component={Areas} />
+          <Redirect exact from="/" to="/user-info" />
+          <Redirect t="/not-found" />
+        </Switch>
+      </div>
+      <br />
+      <br />
       <Footer />
     </React.Fragment>
   );

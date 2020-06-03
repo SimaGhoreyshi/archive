@@ -1,13 +1,10 @@
 .dashboard {
-  padding-top: 20vh;
-  padding-bottom: 10vh;
-  min-width: 100vw;
   overflow-x: hidden;
 }
 .card {
-  width: 200px;
+  width: 190px;
   float: right;
-  margin: 2%;
+  margin: 1%;
 }
 .card:hover {
   animation: pulse;
