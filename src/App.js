@@ -23,9 +23,9 @@ function App() {
       <div className="container">
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/users/add" component={CreateUser} />
+          <Route path="/users/edit" component={EditUser} />
           <Route path="/users" component={UsersList} />
-          <Route path="/create-user" component={CreateUser} />
-          <Route path="/edit-user" component={EditUser} />
 
           <Route path="/reports" component={Reports} />
           <Route path="/user-info" component={UserInfo} />

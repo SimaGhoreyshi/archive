@@ -56,7 +56,7 @@ const NavBar = () => {
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <Link className="dropdown-item" to="/create-user">
+              <Link className="dropdown-item" to="/users/add">
                 اپراتور جدید
               </Link>
               <Link className="dropdown-item" to="/users">

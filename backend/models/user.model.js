@@ -11,39 +11,32 @@ const usersSchema = new Schema(
       trim: true,
       minlength: 5,
     },
-  },
-  {
+
     password: {
       type: String,
       required: true,
       minlength: 5,
     },
-  },
-  {
+
     firstName: {
       type: String,
       required: true,
     },
-  },
-  {
     lastName: {
       type: String,
       required: true,
     },
-  },
-  {
     phoneNumber: {
-      type: Number, //????Which is better????
-      required: true,
+      type: Number,
     },
-  },
-  {
+
     registerDate: {
       type: Date,
-      required: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 const User = mongoose.model("User", usersSchema);

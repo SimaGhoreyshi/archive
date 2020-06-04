@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./create-user.css";
+import axios from "axios";
 
 class CreateUser extends Component {
   constructor(props) {
@@ -20,12 +21,6 @@ class CreateUser extends Component {
     this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
     this.onChangeRole = this.onChangeRole.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      email: "testUser@g.com",
-    });
   }
 
   onChangeEmail(e) {
@@ -75,9 +70,11 @@ class CreateUser extends Component {
       phoneNumber: this.state.phoneNumber,
       role: this.state.role,
     };
-    console.log(user);
+    axios
+      .post("http://localhost:5000/users/add", user)
+      .then((res) => console.log(res.data));
 
-    window.location = "/users";
+    // window.location = "/users";
   }
   render() {
     return (
