@@ -11,7 +11,7 @@ class CreateUser extends Component {
       password: "",
       firstName: "",
       lastName: "",
-      phoneNumber: 0,
+      phoneNumber: "",
       role: false,
     };
     this.onChangeEmail = this.onChangeEmail.bind(this);

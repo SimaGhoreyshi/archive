@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const User = (props) => {
+  const date = props.user.registerDate.toString();
+
   return (
     <tr>
       <td>
@@ -10,7 +12,7 @@ const User = (props) => {
       </td>
       <td>{props.user.email}</td>
       <td>{props.user.phoneNumber}</td>
-      <td>{props.user.registerDate}</td>
+      <td>{date.substring(0, 9)}</td>
       <td>
         <button
           className="btn btn-danger btn-sm"
@@ -47,7 +49,7 @@ class UsersList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/users/")
+      .get("http://localhost:5000/users")
       .then((res) => {
         this.setState({ users: res.data });
       })
@@ -69,7 +71,7 @@ class UsersList extends Component {
   }
   handleDelete(id) {
     axios
-      .delete("http://localhost:5000/users" + id)
+      .delete("http://localhost:5000/users/" + id)
       .then((res) => console.log(res.data));
     this.setState({ users: this.state.users.filter((u) => u._id !== id) });
   }
