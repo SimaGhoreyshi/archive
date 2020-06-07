@@ -4,6 +4,8 @@ import axios from "axios";
 
 const User = (props) => {
   const date = props.user.registerDate.toString();
+  const id = props.user._id;
+  console.log(id);
 
   return (
     <tr>
@@ -22,12 +24,15 @@ const User = (props) => {
         >
           <i className="fas fa-trash-alt"></i>
         </button>
-        <Link className="btn btn-info btn-sm" to={"/edit/" + props.user._id}>
+        <Link
+          className="btn btn-info btn-sm"
+          to={"/users/edit/" + props.user._id}
+        >
           <i className="fas fa-pen"></i>
         </Link>
         <Link
           className="btn btn-success/danger btn-sm"
-          to={"/edit/" + props.user._id}
+          to={"/users/activeToggle/" + props.user._id}
         >
           <i className="fas fa-user-slash"></i>
           <i className="fas fa-user"></i>
@@ -63,8 +68,9 @@ class UsersList extends Component {
       return (
         <User
           user={currentUser}
-          key={currentUser._id}
           handleDelete={this.handleDelete}
+          key={currentUser._id}
+          userId={currentUser._id}
         />
       );
     });

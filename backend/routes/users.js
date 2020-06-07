@@ -11,7 +11,7 @@ router.route("/").get((req, res) => {
 //GET by id
 router.route("/:id").get((req, res) => {
   User.findById(req.params.id)
-    .then((users) => res.json(users))
+    .then((user) => res.json(user))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -21,6 +21,8 @@ router.route("/add").post((req, res) => {
   const password = req.body.password;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
+  const phoneNumber = Number(req.body.phoneNumber);
+  const role = Boolean(req.body.role);
   const registerDate = Date(req.body.date);
 
   const newUser = new User({
@@ -28,6 +30,8 @@ router.route("/add").post((req, res) => {
     password,
     firstName,
     lastName,
+    phoneNumber,
+    role,
     registerDate,
   });
   newUser
@@ -44,23 +48,22 @@ router.route("/:id").delete((req, res) => {
 });
 
 //UPDTE
-router.route("/update/:id").post((req, res) => {
-  User.findById(req.params.id).then((user) => {
-    user.email = req.body.email;
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.lastName;
-    user.password = req.body.password;
+router.route("/edit/:id").post((req, res) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      user.email = req.body.email;
+      user.firstName = req.body.firstName;
+      user.lastName = req.body.lastName;
+      user.phoneNumber = Number(req.body.phoneNumber);
+      user.role = Boolean(req.body.role);
 
-    user
-      .save()
-      .then(() => res.json("User updated!"))
-      .catch((err) => res.status(400).json("Error: " + err));
-  });
-});
+      console.log(user);
 
-router.route("/:id").put((req, res) => {
-  User.findByIdAndUpdate(req.params.id)
-    .then(() => res.json("User updated!"))
+      user
+        .save()
+        .then(() => res.json("User updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

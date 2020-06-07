@@ -22,11 +22,12 @@ const NavBar = () => {
             <div
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
+              to="#"
             >
-              <Link className="dropdown-item" href="/user-info">
+              <Link className="dropdown-item" to="/user-info">
                 حساب کاربری
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 خروج
               </Link>
             </div>
@@ -85,19 +86,19 @@ const NavBar = () => {
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 عملکرد اپراتور
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 عکس‌های ثبت شده
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 تایید نشده‌ها
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 عملکرد تایید کننده
               </Link>
-              <Link className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="#">
                 تغییرات اسناد
               </Link>
             </div>

@@ -27,11 +27,13 @@ const usersSchema = new Schema(
       required: true,
     },
     phoneNumber: {
-      type: String,
+      type: Number,
+      required: true,
     },
 
     registerDate: {
       type: Date,
+      required: true,
     },
   },
   {
