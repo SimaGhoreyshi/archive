@@ -63,7 +63,7 @@ const NavBar = () => {
               <Link className="dropdown-item" to="/users">
                 مدیریت اپراتورها
               </Link>
-              <Link className="dropdown-item" to="#">
+              <Link className="dropdown-item" to="/students">
                 مدیریت دانشجویان
               </Link>
               <Link className="dropdown-item" to="#">

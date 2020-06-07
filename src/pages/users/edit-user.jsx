@@ -1,39 +1,44 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./create-user.css";
 
-class CreateUser extends Component {
+class EditUser extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
-      password: "",
       firstName: "",
       lastName: "",
       phoneNumber: 0,
-      registerDate: new Date(),
       role: false,
     };
-
     this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeLastName = this.onChangeLastName.bind(this);
     this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
     this.onChangeRole = this.onChangeRole.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/users/" + this.props.match.params.id)
+      .then((res) => {
+        this.setState({
+          email: res.data.email,
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          phoneNumber: Number(res.data.phoneNumber),
+          role: Boolean(res.data.role),
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   onChangeEmail(e) {
     this.setState({
       email: e.target.value,
-    });
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value,
     });
   }
 
@@ -66,27 +71,29 @@ class CreateUser extends Component {
 
     const user = {
       email: this.state.email,
-      password: this.state.password,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      phoneNumber: this.state.phoneNumber,
-      role: this.state.role,
+      phoneNumber: Number(this.state.phoneNumber),
+      role: Boolean(this.state.role),
     };
 
-    console.log(user);
+    console.log(this.state.lastName);
+    console.log(this.props.match.params.id);
 
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post(
+        "http://localhost:5000/users/edit/" + this.props.match.params.id,
+        user
+      )
       .then((res) => console.log(res.data));
 
     //window.location = "/users";
   }
-
   render() {
     return (
-      <div>
+      <div className="container">
         <h2>
-          <span className="badge badge-primary ">ایجاد اپراتور جدید</span>
+          <span className="badge badge-primary ">ویرایش اپراتور</span>
         </h2>
         <form onSubmit={this.onSubmit}>
           <div className="row">
@@ -143,33 +150,12 @@ class CreateUser extends Component {
               </div>
             </div>
           </div>
-
-          <div className="row">
-            <div className="input-group col">
-              <input
-                required
-                type="text"
-                className="form-control"
-                placeholder="کلمه عبور"
-                aria-label="Password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-              ></input>
-            </div>
-            <div className="input-group col">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="تکرار کلمه عبور"
-                aria-label="Password"
-              />
-            </div>
-          </div>
           <div className="form-check form-check-inline">
             <label className="form-check-label">مدیر پنل</label>
             <input
               className="form-check-input"
               type="checkbox"
+              id="admin"
               value={this.state.role}
               onChange={this.onChangeRole}
             />
@@ -185,4 +171,4 @@ class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default EditUser;

@@ -23,13 +23,13 @@ const User = (props) => {
           }}
         >
           <i className="fas fa-trash-alt"></i>
-        </button>
+        </button>{" "}
         <Link
           className="btn btn-info btn-sm"
           to={"/users/edit/" + props.user._id}
         >
           <i className="fas fa-pen"></i>
-        </Link>
+        </Link>{" "}
         <Link
           className="btn btn-success/danger btn-sm"
           to={"/users/activeToggle/" + props.user._id}
@@ -83,7 +83,7 @@ class UsersList extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <table className="table table-striped">
           <thead>
             <tr>

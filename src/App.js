@@ -10,12 +10,16 @@ import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 
 import Areas from "./pages/areas";
-import Reports from "./pages/reports";
-import EditUser from "./pages/edit-user";
 import UserInfo from "./pages/user-info";
 import Dashboard from "./pages/dashboard";
-import UsersList from "./pages/users-list";
-import CreateUser from "./pages/create-user";
+
+import UsersList from "./pages/users/users-list";
+import CreateUser from "./pages/users/create-user";
+import EditUser from "./pages/users/edit-user";
+
+import StudentsList from "./pages/students/students-list";
+
+import Reports from "./pages/reports";
 
 function App() {
   return (
@@ -24,17 +28,21 @@ function App() {
       <br />
       <br />
       <br />
-      <div className="container">
+      <div>
         <Switch>
+          <Route path="/user-info" component={UserInfo} />
+          <Route path="/areas" component={Areas} />
+          <Redirect exact from="/" to="/user-info" />
           <Route path="/dashboard" component={Dashboard} />
+
           <Route path="/users/add" component={CreateUser} />
           <Route path="/users/edit/:id" component={EditUser} />
           <Route path="/users" component={UsersList} />
 
+          <Route path="/students" component={StudentsList} />
+
           <Route path="/reports" component={Reports} />
-          <Route path="/user-info" component={UserInfo} />
-          <Route path="/areas" component={Areas} />
-          <Redirect exact from="/" to="/user-info" />
+
           <Redirect to="/not-found" />
         </Switch>
       </div>

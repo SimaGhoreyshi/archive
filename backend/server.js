@@ -22,7 +22,9 @@ connection.once("open", () => {
 });
 
 const usersRouter = require("./routes/users");
+const studentsRouter = require("./routes/students");
 app.use("/users", usersRouter);
+app.use("/students", studentsRouter);
 
 //starting server
 app.listen(port, () => {
