@@ -4,8 +4,6 @@ import axios from "axios";
 
 const Student = (props) => {
   //   const date = props.student.registerDate.toString();
-  const id = props.student._id;
-  console.log(id);
 
   // studentNumber
   // firstName
@@ -56,106 +54,135 @@ const Student = (props) => {
 };
 
 class StudentsList extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    // this.StudentList = this.StudentList.bind(this);
-    // this.onChangeFirstName = this.onChangeFirstName.bind(this);
-    // this.onChangeLastName = this.onChangeLastName.bind(this);
-    // this.onChangeNationalCode = this.onChangeNationalCode.bind(this);
-    // this.onChangeBirthCertificateCode = this.onChangeBirthCertificateCode.bind(
+    this.StudentList = this.StudentList.bind(this);
+    this.onSerarchByFirstName = this.onSerarchByFirstName.bind(this);
+    // this.onSerarchByLastName = this.onSerarchByLastName.bind(this);
+    // this.onSerarchByNationalCode = this.onSerarchByNationalCode.bind(this);
+    // this.onSerarchByBirthCertificateCode = this.onSerarchByBirthCertificateCode.bind(
     //   this
     // );
-    // this.onChangeStudentNumber = this.onChangeStudentNumber.bind(this);
-    // this.onChangeEnteringYear = this.onChangeEnteringYear.bind(this);
-    // this.onChangeGraduationYear = this.onChangeEnteringYear.bind(this);
-    // this.onChangeCollege = this.onChangeCollege.bind(this);
-    // this.onChangeField = this.onChangeField.bind(this);
-    // this.onChangeGrade = this.onChangeGrade.bind(this);
-    // this.onChangeFund = this.onChangeFund.bind(this);
-    // this.onChangeQuota = this.onChangeQuota.bind(this);
-    // this.onChangeStatus = this.onChangeStatus.bind(this);
+    // this.onSerarchByStudentNumber = this.onSerarchByStudentNumber.bind(this);
+    // this.onSerarchByEnteringYear = this.onSerarchByEnteringYear.bind(this);
+    // this.onSerarchByGraduationYear = this.onSerarchByEnteringYear.bind(this);
+    // this.onSerarchByCollege = this.onSerarchByCollege.bind(this);
+    // this.onSerarchByField = this.onSerarchByField.bind(this);
+    // this.onSerarchByGrade = this.onSerarchByGrade.bind(this);
+    // this.onSerarchByFund = this.onSerarchByFund.bind(this);
+    // this.onSerarchByQuota = this.onSerarchByQuota.bind(this);
+    // this.onSerarchByStatus = this.onSerarchByStatus.bind(this);
 
-    this.state = { students: [] };
+    this.state = { searchKey: "", students: [] };
   }
 
-  //   onChangeFirstName(e) {
-  //     this.setState({
-  //       firstName: e.target.value,
-  //     });
-  //   }
+  onSerarchByFirstName(e) {
+    this.setState({
+      searchKey: e.target.value,
+    });
+  }
 
-  //   onChangeLastName(e) {
-  //     this.setState({
-  //       lastName: e.target.value,
-  //     });
-  //   }
+  onSearchLastName(e) {
+    this.setState({
+      searchKey: e.target.value,
+    });
+  }
 
-  //   onChangeNationalCode(e) {
+  //   onSearchNationalCode(e) {
   //     this.setState({
   //       nationalCode: e.target.value,
   //     });
   //   }
 
-  //   onChangeBirthCertificateCode(e) {
+  //   onSearchBirthCertificateCode(e) {
   //     this.setState({
   //       birthCertificateCode: e.target.value,
   //     });
   //   }
 
-  //   onChangeStudentNumber(e) {
+  //   onSearchStudentNumber(e) {
   //     this.setState({
   //       studentNumber: e.target.value,
   //     });
   //   }
 
-  //   onChangeEnteringYear(e) {
+  //   onSearchEnteringYear(e) {
   //     this.setState({
   //       enteringYear: e.target.value,
   //     });
   //   }
 
-  //   onChangeGraduationYear(e) {
+  //   onSearchGraduationYear(e) {
   //     this.setState({
   //       graduationYear: e.target.value,
   //     });
   //   }
 
-  //   onChangeCollege(e) {
+  //   onSearchCollege(e) {
   //     this.setState({
   //       college: e.target.value,
   //     });
   //   }
 
-  //   onChangeField(e) {
+  //   onSearchField(e) {
   //     this.setState({
   //       field: e.target.value,
   //     });
   //   }
 
-  //   onChangeGrade(e) {
+  //   onSearchGrade(e) {
   //     this.setState({
   //       grade: e.target.value,
   //     });
   //   }
 
-  //   onChangeFund(e) {
+  //   onSearchFund(e) {
   //     this.setState({
   //       fund: e.target.value,
   //     });
   //   }
 
-  //   onChangeQuota(e) {
+  //   onSearchQuota(e) {
   //     this.setState({
   //       quota: e.target.value,
   //     });
   //   }
 
-  //   onChangeStatus(e) {
+  //   onSearchStatus(e) {
   //     this.setState({
   //       status: e.target.value,
   //     });
   //   }
+
+  StudentList() {
+    let allStudents = this.state.students;
+    console.log(this.state.searchKey);
+    const { searchKey } = this.state.searchKey;
+    let studentsList = null;
+    if (this.state.searchKey) {
+      studentsList = allStudents.filter((s) => {
+        if (s.firstName.indexOf(this.state.searchKey) !== -1) return s;
+        else return null;
+      });
+    } else {
+      studentsList = allStudents;
+    }
+
+    if (studentsList !== null) {
+      return studentsList.map((currentStudent) => {
+        return (
+          <Student
+            student={currentStudent}
+            key={currentStudent._id}
+            studentId={currentStudent._id}
+          />
+        );
+      });
+    } else {
+      return <p>نتیجه ای یافت نشد</p>;
+    }
+  }
 
   componentDidMount() {
     axios
@@ -168,27 +195,14 @@ class StudentsList extends Component {
       });
   }
 
-  StudentList() {
-    let studentsList = this.state.students;
-    return studentsList.map((currentStudent) => {
-      return (
-        <Student
-          student={currentStudent}
-          key={currentStudent._id}
-          studentId={currentStudent._id}
-        />
-      );
-    });
-  }
-
   render() {
     return (
-      <div className="table-responsive mx-0" style={{ marginLeft: "0" }}>
-        {/* <input
+      <div className="table-responsive" style={{ marginLeft: "0" }}>
+        <input
           type="text"
           placeholder="نام"
-          onChange={this.onChangeFirstName}
-        /> */}
+          onChange={this.onSerarchByFirstName}
+        />
         <h1 style={{ marginRight: "1vw" }}>مدیریت دانشجویان</h1>
         <br />
         <table className="table table-striped">
