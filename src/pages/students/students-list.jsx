@@ -58,25 +58,19 @@ class StudentsList extends Component {
     super();
 
     this.onClickField = this.onClickField.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.onChangeField = this.onChangeField.bind(this);
     this.StudentList = this.StudentList.bind(this);
-    // this.onSerarchByFirstName = this.onSerarchByFirstName.bind(this);
-    //// this.onSerarchByLastName = this.onSerarchByLastName.bind(this);
-    //// this.onSerarchByNationalCode = this.onSerarchByNationalCode.bind(this);
-    //// this.onSerarchByBirthCertificateCode = this.onSerarchByBirthCertificateCode.bind(
-    ////   this
-    //// );
-    //// this.onSerarchByStudentNumber = this.onSerarchByStudentNumber.bind(this);
-    //// this.onSerarchByEnteringYear = this.onSerarchByEnteringYear.bind(this);
-    //// this.onSerarchByGraduationYear = this.onSerarchByEnteringYear.bind(this);
-    //// this.onSerarchByCollege = this.onSerarchByCollege.bind(this);
-    //// this.onSerarchByField = this.onSerarchByField.bind(this);
-    //// this.onSerarchByGrade = this.onSerarchByGrade.bind(this);
-    //// this.onSerarchByFund = this.onSerarchByFund.bind(this);
-    //// this.onSerarchByQuota = this.onSerarchByQuota.bind(this);
-    //// this.onSerarchByStatus = this.onSerarchByStatus.bind(this);
 
-    this.state = { searchKey: "", searchField: null, students: [] };
+    this.state = {
+      searchKey: "",
+      searchField: null,
+      students: [],
+      searchCollege: "همه دانشکده ها",
+      searchGrade: "همه مقاطع",
+      searchFund: "انتخاب نشده", //dore
+      searchQuota: "انتخاب نشده", //sahmiye
+      searchStatus: "انتخاب نشده", //vaz'iate
+    };
   }
 
   onClickField(e) {
@@ -84,89 +78,11 @@ class StudentsList extends Component {
     console.log(this.state.students);
   }
 
-  onChange(e) {
+  onChangeField(e) {
     this.setState({
       searchKey: e.target.value,
     });
   }
-
-  //   onSerarchByFirstName(e) {
-  //     this.setState({
-  //       searchKey: e.target.value,
-  //     });
-  //   }
-
-  //   onSearchLastName(e) {
-  //     this.setState({
-  //       searchKey: e.target.value,
-  //     });
-  //   }
-
-  ////   onSearchNationalCode(e) {
-  ////     this.setState({
-  ////       nationalCode: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchBirthCertificateCode(e) {
-  ////     this.setState({
-  ////       birthCertificateCode: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchStudentNumber(e) {
-  ////     this.setState({
-  ////       studentNumber: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchEnteringYear(e) {
-  ////     this.setState({
-  ////       enteringYear: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchGraduationYear(e) {
-  ////     this.setState({
-  ////       graduationYear: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchCollege(e) {
-  ////     this.setState({
-  ////       college: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchField(e) {
-  ////     this.setState({
-  ////       field: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchGrade(e) {
-  ////     this.setState({
-  ////       grade: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchFund(e) {
-  ////     this.setState({
-  ////       fund: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchQuota(e) {
-  ////     this.setState({
-  ////       quota: e.target.value,
-  ////     });
-  ////   }
-
-  ////   onSearchStatus(e) {
-  ////     this.setState({
-  ////       status: e.target.value,
-  ////     });
-  ////   }
 
   StudentList() {
     let allStudents = this.state.students;
@@ -174,11 +90,15 @@ class StudentsList extends Component {
     console.log(this.state.searchKey);
     let studentsList = null;
 
-    if (this.state.searchKey) {
+    if (
+      this.state.searchKey === "همه دانشکده ها" ||
+      this.state.searchKey === "انتخاب نشده" ||
+      this.state.searchKey === "همه مقاطع"
+    ) {
+      studentsList = allStudents;
+    } else if (this.state.searchKey) {
       studentsList = allStudents.filter((s) => {
         const searchField = this.state.searchField;
-
-        console.log(s[searchField]);
 
         if (s[searchField].toString().indexOf(this.state.searchKey) !== -1)
           return s;
@@ -187,6 +107,7 @@ class StudentsList extends Component {
     } else {
       studentsList = allStudents;
     }
+    console.log(studentsList);
 
     if (studentsList !== null) {
       return studentsList.map((currentStudent) => {
@@ -199,7 +120,7 @@ class StudentsList extends Component {
         );
       });
     } else {
-      return <p>نتیجه ای یافت نشد</p>;
+      return "نتیجه ای یافت نشد";
     }
   }
 
@@ -216,7 +137,7 @@ class StudentsList extends Component {
 
   render() {
     return (
-      <div className="table-responsive" style={{ marginLeft: "0" }}>
+      <div className="table-responsive inline" style={{ marginLeft: "0" }}>
         <br />
         <h1 style={{ marginRight: "1vw" }}>مدیریت دانشجویان</h1>
         <br />
@@ -225,52 +146,364 @@ class StudentsList extends Component {
             name="firstName"
             type="text"
             placeholder="نام"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
           <input
             name="lastName"
             type="text"
             placeholder="نام خانوادگی"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
           <input
             name="nationalCode"
             type="text"
             placeholder="کد ملی"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
           <input
             name="birthCertificateCode"
             type="text"
             placeholder="شماره شناسنامه"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
           <input
             name="studentNumber"
             type="text"
             placeholder="کد دانشجویی"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
           <input
             name="enteringYear"
             type="text"
             placeholder="سال ورود"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
           <input
             name="graduationYear"
             type="text"
             placeholder="سال فراغت از تحصیل"
-            onChange={this.onChange}
+            onChange={this.onChangeField}
             onClick={this.onClickField}
           />
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {this.state.searchCollege}
+            </button>
+            <div className="dropdown-menu">
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchKey: "همه دانشکده ها",
+                    searchField: "college",
+                    searchCollege: "همه دانشکده ها",
+                  })
+                }
+              >
+                همه دانشکده ها
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchKey: "فنی و مهندسی",
+                    searchField: "college",
+                    searchCollege: "فنی و مهندسی",
+                  })
+                }
+              >
+                فنی و مهندسی
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchKey: "هنر و معماری",
+                    searchField: "college",
+                    searchCollege: "هنر و معماری",
+                  })
+                }
+              >
+                هنر و معماری
+              </p>
+            </div>
+          </div>
+
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {this.state.searchGrade}
+            </button>
+            <div className="dropdown-menu">
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchGrade: "همه مقاطع",
+                    searchKey: "1",
+                    searchField: "grade",
+                  })
+                }
+              >
+                همه مقاطع
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchGrade: "کارشناسی",
+                    searchKey: "کارشناسی",
+                    searchField: "grade",
+                  })
+                }
+              >
+                کارشناسی
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchGrade: "کارشناسی ارشد",
+                    searchKey: "کارشناسی ارشد",
+                    searchField: "grade",
+                  })
+                }
+              >
+                کارشناسی ارشد
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchGrade: "دکتری",
+                    searchKey: "دکتری",
+                    searchField: "grade",
+                  })
+                }
+              >
+                دکتری
+              </p>
+            </div>
+          </div>
+
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {this.state.searchFund}
+            </button>
+            <div className="dropdown-menu">
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchFund: "انتخاب نشده",
+                    searchField: "fund",
+                    searchKey: "انتخاب نشده",
+                  })
+                }
+              >
+                انتخاب نشده
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchFund: "روزانه",
+                    searchField: "fund",
+                    searchKey: "روزانه",
+                  })
+                }
+              >
+                روزانه
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchFund: "شبانه",
+                    searchField: "fund",
+                    searchKey: "شبانه",
+                  })
+                }
+              >
+                شبانه
+              </p>
+            </div>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {this.state.searchQuota}
+            </button>
+            <div className="dropdown-menu">
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "انتخاب نشده",
+                    searchField: "quota",
+                    searchKey: "انتخاب نشده",
+                  })
+                }
+              >
+                انتخاب نشده
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "منطقه یک",
+                    searchField: "quota",
+                    searchKey: "منطقه یک",
+                  })
+                }
+              >
+                منطقه یک
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "منطقه دو",
+                    searchField: "quota",
+                    searchKey: "منطقه دو",
+                  })
+                }
+              >
+                منطقه دو
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "منطقه سه",
+                    searchField: "quota",
+                    searchKey: "منطقه سه",
+                  })
+                }
+              >
+                منطقه سه
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "ایثارگران",
+                    searchField: "quota",
+                    searchKey: "ایثارگران",
+                  })
+                }
+              >
+                ایثارگران
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "رزمندگان",
+                    searchField: "quota",
+                    searchKey: "رزمندگان",
+                  })
+                }
+              >
+                رزمندگان
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "خانواده شهدا",
+                    searchField: "quota",
+                    searchKey: "خانواده شهدا",
+                  })
+                }
+              >
+                خانواده شهدا
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() =>
+                  this.setState({
+                    searchQuota: "کارمندان",
+                    searchField: "quota",
+                    searchKey: "کارمندان",
+                  })
+                }
+              >
+                کارمندان
+              </p>
+            </div>
+          </div>
+
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {this.state.searchStatus}
+            </button>
+            <div className="dropdown-menu">
+              <p
+                className="dropdown-item"
+                onClick={() => this.setState({ searchStatus: "انتخاب نشده" })}
+              >
+                انتخاب نشده
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => this.setState({ searchStatus: "در حال تحصیل" })}
+              >
+                در حال تحصیل
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => this.setState({ searchStatus: "فارغ التحصیل" })}
+              >
+                فارغ التحصیل
+              </p>
+            </div>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              تعامل با سرویس وب
+            </button>
+            <div className="dropdown-menu">
+              <p className="dropdown-item">؟</p>
+              <p className="dropdown-item">؟</p>
+            </div>
+          </div>
         </div>
+        <br />
         <table className="table table-striped">
           <thead>
             <tr>
@@ -297,15 +530,3 @@ class StudentsList extends Component {
 }
 
 export default StudentsList;
-
-//// const studentNumber = Number(req.body.studentNumber);
-//// const firstName = req.body.firstName;
-//// const lastName = req.body.lastName;
-//// const phoneNumber = Number(req.body.phoneNumber);
-//// const enteringYear = Number(req.body.enteringYear);
-//// const college = req.body.college;
-//// const grade = req.body.grade;
-//// const nationalCode = Number(req.body.nationalCode);
-//// const dateOfBirth = Number(req.body.dateOfBirth);
-//// const lastEditDate = Date(req.body.lastEditDate);
-//// const lastSamaUpdateDate = Date(req.body.lastSamaUpdateDate);
