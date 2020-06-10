@@ -18,6 +18,7 @@ import CreateUser from "./pages/users/create-user";
 import EditUser from "./pages/users/edit-user";
 
 import StudentsList from "./pages/students/students-list";
+import StudentDetail from "./pages/students/student-detail";
 
 import Reports from "./pages/reports";
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/users/edit/:id" component={EditUser} />
           <Route path="/users" component={UsersList} />
 
+          <Route path="/students/details/:id" component={StudentDetail} />
           <Route path="/students" component={StudentsList} />
 
           <Route path="/reports" component={Reports} />

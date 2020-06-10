@@ -9,7 +9,7 @@ router.route("/").get((req, res) => {
 });
 
 //GET by id
-router.route("/:id").get((req, res) => {
+router.route("/details/:id").get((req, res) => {
   Student.findById(req.params.id)
     .then((student) => res.json(student))
     .catch((err) => res.status(400).json("Error: " + err));

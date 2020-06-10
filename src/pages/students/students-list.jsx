@@ -137,369 +137,393 @@ class StudentsList extends Component {
 
   render() {
     return (
-      <div className="table-responsive inline" style={{ marginLeft: "0" }}>
+      <div className="table-responsive">
         <br />
-        <h1 style={{ marginRight: "1vw" }}>مدیریت دانشجویان</h1>
+        <h1 style={{ marginRight: "4vw" }}>
+          <span className="badge">مدیریت دانشجویان</span>
+        </h1>
         <br />
-        <div className="searchBar">
-          <input
-            name="firstName"
-            type="text"
-            placeholder="نام"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <input
-            name="lastName"
-            type="text"
-            placeholder="نام خانوادگی"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <input
-            name="nationalCode"
-            type="text"
-            placeholder="کد ملی"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <input
-            name="birthCertificateCode"
-            type="text"
-            placeholder="شماره شناسنامه"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <input
-            name="studentNumber"
-            type="text"
-            placeholder="کد دانشجویی"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <input
-            name="enteringYear"
-            type="text"
-            placeholder="سال ورود"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <input
-            name="graduationYear"
-            type="text"
-            placeholder="سال فراغت از تحصیل"
-            onChange={this.onChangeField}
-            onClick={this.onClickField}
-          />
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {this.state.searchCollege}
-            </button>
-            <div className="dropdown-menu">
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchKey: "همه دانشکده ها",
-                    searchField: "college",
-                    searchCollege: "همه دانشکده ها",
-                  })
-                }
-              >
-                همه دانشکده ها
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchKey: "فنی و مهندسی",
-                    searchField: "college",
-                    searchCollege: "فنی و مهندسی",
-                  })
-                }
-              >
-                فنی و مهندسی
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchKey: "هنر و معماری",
-                    searchField: "college",
-                    searchCollege: "هنر و معماری",
-                  })
-                }
-              >
-                هنر و معماری
-              </p>
-            </div>
+        <div className="searchBar" style={{ margin: "0.1% 5%" }}>
+          <div className="row">
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="firstName"
+              type="text"
+              placeholder="نام"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="lastName"
+              type="text"
+              placeholder="نام خانوادگی"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="nationalCode"
+              type="text"
+              placeholder="کد ملی"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="birthCertificateCode"
+              type="text"
+              placeholder="شماره شناسنامه"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="studentNumber"
+              type="text"
+              placeholder="کد دانشجویی"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="enteringYear"
+              type="text"
+              placeholder="سال ورود"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
+            <input
+              style={{ width: "200px", margin: "0.1% 1%" }}
+              name="graduationYear"
+              type="text"
+              placeholder="سال فراغت از تحصیل"
+              className="form-control"
+              onChange={this.onChangeField}
+              onClick={this.onClickField}
+            />
           </div>
+          <div className="row">
+            <div className="dropdown" style={{ margin: "1% 1%" }}>
+              <button
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {this.state.searchCollege}
+              </button>
+              <div className="dropdown-menu">
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchKey: "همه دانشکده ها",
+                      searchField: "college",
+                      searchCollege: "همه دانشکده ها",
+                    })
+                  }
+                >
+                  همه دانشکده ها
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchKey: "فنی و مهندسی",
+                      searchField: "college",
+                      searchCollege: "فنی و مهندسی",
+                    })
+                  }
+                >
+                  فنی و مهندسی
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchKey: "هنر و معماری",
+                      searchField: "college",
+                      searchCollege: "هنر و معماری",
+                    })
+                  }
+                >
+                  هنر و معماری
+                </p>
+              </div>
+            </div>
 
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {this.state.searchGrade}
-            </button>
-            <div className="dropdown-menu">
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchGrade: "همه مقاطع",
-                    searchKey: "1",
-                    searchField: "grade",
-                  })
-                }
+            <div className="dropdown" style={{ margin: "1% 1%" }}>
+              <button
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-                همه مقاطع
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchGrade: "کارشناسی",
-                    searchKey: "کارشناسی",
-                    searchField: "grade",
-                  })
-                }
-              >
-                کارشناسی
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchGrade: "کارشناسی ارشد",
-                    searchKey: "کارشناسی ارشد",
-                    searchField: "grade",
-                  })
-                }
-              >
-                کارشناسی ارشد
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchGrade: "دکتری",
-                    searchKey: "دکتری",
-                    searchField: "grade",
-                  })
-                }
-              >
-                دکتری
-              </p>
+                {this.state.searchGrade}
+              </button>
+              <div className="dropdown-menu">
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchGrade: "همه مقاطع",
+                      searchKey: "1",
+                      searchField: "grade",
+                    })
+                  }
+                >
+                  همه مقاطع
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchGrade: "کارشناسی",
+                      searchKey: "کارشناسی",
+                      searchField: "grade",
+                    })
+                  }
+                >
+                  کارشناسی
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchGrade: "کارشناسی ارشد",
+                      searchKey: "کارشناسی ارشد",
+                      searchField: "grade",
+                    })
+                  }
+                >
+                  کارشناسی ارشد
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchGrade: "دکتری",
+                      searchKey: "دکتری",
+                      searchField: "grade",
+                    })
+                  }
+                >
+                  دکتری
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {this.state.searchFund}
-            </button>
-            <div className="dropdown-menu">
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchFund: "انتخاب نشده",
-                    searchField: "fund",
-                    searchKey: "انتخاب نشده",
-                  })
-                }
+            <div className="dropdown" style={{ margin: "1% 1%" }}>
+              <button
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-                انتخاب نشده
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchFund: "روزانه",
-                    searchField: "fund",
-                    searchKey: "روزانه",
-                  })
-                }
-              >
-                روزانه
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchFund: "شبانه",
-                    searchField: "fund",
-                    searchKey: "شبانه",
-                  })
-                }
-              >
-                شبانه
-              </p>
+                {this.state.searchFund}
+              </button>
+              <div className="dropdown-menu">
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchFund: "انتخاب نشده",
+                      searchField: "fund",
+                      searchKey: "انتخاب نشده",
+                    })
+                  }
+                >
+                  انتخاب نشده
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchFund: "روزانه",
+                      searchField: "fund",
+                      searchKey: "روزانه",
+                    })
+                  }
+                >
+                  روزانه
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchFund: "شبانه",
+                      searchField: "fund",
+                      searchKey: "شبانه",
+                    })
+                  }
+                >
+                  شبانه
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {this.state.searchQuota}
-            </button>
-            <div className="dropdown-menu">
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "انتخاب نشده",
-                    searchField: "quota",
-                    searchKey: "انتخاب نشده",
-                  })
-                }
+            <div className="dropdown" style={{ margin: "1% 1%" }}>
+              <button
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-                انتخاب نشده
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "منطقه یک",
-                    searchField: "quota",
-                    searchKey: "منطقه یک",
-                  })
-                }
-              >
-                منطقه یک
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "منطقه دو",
-                    searchField: "quota",
-                    searchKey: "منطقه دو",
-                  })
-                }
-              >
-                منطقه دو
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "منطقه سه",
-                    searchField: "quota",
-                    searchKey: "منطقه سه",
-                  })
-                }
-              >
-                منطقه سه
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "ایثارگران",
-                    searchField: "quota",
-                    searchKey: "ایثارگران",
-                  })
-                }
-              >
-                ایثارگران
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "رزمندگان",
-                    searchField: "quota",
-                    searchKey: "رزمندگان",
-                  })
-                }
-              >
-                رزمندگان
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "خانواده شهدا",
-                    searchField: "quota",
-                    searchKey: "خانواده شهدا",
-                  })
-                }
-              >
-                خانواده شهدا
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() =>
-                  this.setState({
-                    searchQuota: "کارمندان",
-                    searchField: "quota",
-                    searchKey: "کارمندان",
-                  })
-                }
-              >
-                کارمندان
-              </p>
+                {this.state.searchQuota}
+              </button>
+              <div className="dropdown-menu">
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "انتخاب نشده",
+                      searchField: "quota",
+                      searchKey: "انتخاب نشده",
+                    })
+                  }
+                >
+                  انتخاب نشده
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "منطقه یک",
+                      searchField: "quota",
+                      searchKey: "منطقه یک",
+                    })
+                  }
+                >
+                  منطقه یک
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "منطقه دو",
+                      searchField: "quota",
+                      searchKey: "منطقه دو",
+                    })
+                  }
+                >
+                  منطقه دو
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "منطقه سه",
+                      searchField: "quota",
+                      searchKey: "منطقه سه",
+                    })
+                  }
+                >
+                  منطقه سه
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "ایثارگران",
+                      searchField: "quota",
+                      searchKey: "ایثارگران",
+                    })
+                  }
+                >
+                  ایثارگران
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "رزمندگان",
+                      searchField: "quota",
+                      searchKey: "رزمندگان",
+                    })
+                  }
+                >
+                  رزمندگان
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "خانواده شهدا",
+                      searchField: "quota",
+                      searchKey: "خانواده شهدا",
+                    })
+                  }
+                >
+                  خانواده شهدا
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({
+                      searchQuota: "کارمندان",
+                      searchField: "quota",
+                      searchKey: "کارمندان",
+                    })
+                  }
+                >
+                  کارمندان
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {this.state.searchStatus}
-            </button>
-            <div className="dropdown-menu">
-              <p
-                className="dropdown-item"
-                onClick={() => this.setState({ searchStatus: "انتخاب نشده" })}
+            <div className="dropdown" style={{ margin: "1% 1%" }}>
+              <button
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-                انتخاب نشده
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() => this.setState({ searchStatus: "در حال تحصیل" })}
-              >
-                در حال تحصیل
-              </p>
-              <p
-                className="dropdown-item"
-                onClick={() => this.setState({ searchStatus: "فارغ التحصیل" })}
-              >
-                فارغ التحصیل
-              </p>
+                {this.state.searchStatus}
+              </button>
+              <div className="dropdown-menu">
+                <p
+                  className="dropdown-item"
+                  onClick={() => this.setState({ searchStatus: "انتخاب نشده" })}
+                >
+                  انتخاب نشده
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({ searchStatus: "در حال تحصیل" })
+                  }
+                >
+                  در حال تحصیل
+                </p>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.setState({ searchStatus: "فارغ التحصیل" })
+                  }
+                >
+                  فارغ التحصیل
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              تعامل با سرویس وب
-            </button>
-            <div className="dropdown-menu">
-              <p className="dropdown-item">؟</p>
-              <p className="dropdown-item">؟</p>
+            <div className="dropdown" style={{ margin: "1% 1%" }}>
+              <button
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                تعامل با سرویس وب
+              </button>
+              <div className="dropdown-menu">
+                <p className="dropdown-item">؟</p>
+                <p className="dropdown-item">؟</p>
+              </div>
             </div>
           </div>
         </div>
