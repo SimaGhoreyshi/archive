@@ -103,6 +103,29 @@ const NavBar = () => {
               </Link>
             </div>
           </li>
+          <li className="nav-item dropdown">
+            <Link
+              className="nav-link dropdown-toggle"
+              to="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              مدیریت بخش ها
+            </Link>
+            <div
+              className="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <Link className="dropdown-item" to="/sections/add">
+                بخش جدید
+              </Link>
+              <Link className="dropdown-item" to="/sections">
+                مدیریت بخش ها
+              </Link>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>

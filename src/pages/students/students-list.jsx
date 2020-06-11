@@ -31,9 +31,9 @@ const Student = (props) => {
       <td>{props.student.quota}</td>
       <td>{props.student.enteringYear}</td>
       <td>{props.student.graduationYear}</td>
-      <td>{lastEditDate.substring(0, 9)}</td>
+      <td>{lastEditDate.substring(0, 10)}</td>
       <td>{props.student.status}</td>
-      <td>{lastSamaUpdateDate.substring(0, 9)}</td>
+      <td>{lastSamaUpdateDate.substring(0, 10)}</td>
       <td> </td>
       <td>
         <Link

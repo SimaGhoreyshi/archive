@@ -2,84 +2,86 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const User = (props) => {
-  const date = props.user.registerDate.toString();
-  const id = props.user._id;
+const Section = (props) => {
+  const date = props.section.registerDate.toString();
+  const id = props.section._id;
   console.log(id);
 
   return (
     <tr>
       <td>
-        {props.user.firstName} {props.user.lastName}
+        {props.section.firstName} {props.section.lastName}
       </td>
-      <td>{props.user.email}</td>
-      <td>{props.user.phoneNumber}</td>
+      <td>{props.section.email}</td>
+      <td>{props.section.phoneNumber}</td>
       <td>{date.substring(0, 10)}</td>
       <td>
         <button
           className="btn btn-danger btn-sm"
           onClick={() => {
-            props.handleDelete(props.user._id);
+            props.handleDelete(props.section._id);
           }}
         >
           <i className="fas fa-trash-alt"></i>
         </button>{" "}
         <Link
           className="btn btn-info btn-sm"
-          to={"/users/edit/" + props.user._id}
+          to={"/sections/edit/" + props.section._id}
         >
           <i className="fas fa-pen"></i>
         </Link>{" "}
         <Link
           className="btn btn-success/danger btn-sm"
-          to={"/users/activeToggle/" + props.user._id}
+          to={"/sections/activeToggle/" + props.section._id}
         >
-          <i className="fas fa-user-slash"></i>
-          <i className="fas fa-user"></i>
+          <i className="fas fa-section-slash"></i>
+          <i className="fas fa-section"></i>
         </Link>
       </td>
     </tr>
   );
 };
 
-class UsersList extends Component {
+class SectionsList extends Component {
   constructor(props) {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
-    this.UserList = this.UserList.bind(this);
+    this.SectionList = this.SectionList.bind(this);
 
-    this.state = { users: [] };
+    this.state = { sections: [] };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/users")
+      .get("http://localhost:5000/sections")
       .then((res) => {
-        this.setState({ users: res.data });
+        this.setState({ sections: res.data });
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  UserList() {
-    return this.state.users.map((currentUser) => {
+  SectionList() {
+    return this.state.sections.map((currentSection) => {
       return (
-        <User
-          user={currentUser}
+        <Section
+          section={currentSection}
           handleDelete={this.handleDelete}
-          key={currentUser._id}
-          userId={currentUser._id}
+          key={currentSection._id}
+          sectionId={currentSection._id}
         />
       );
     });
   }
   handleDelete(id) {
     axios
-      .delete("http://localhost:5000/users/" + id)
+      .delete("http://localhost:5000/sections/" + id)
       .then((res) => console.log(res.data));
-    this.setState({ users: this.state.users.filter((u) => u._id !== id) });
+    this.setState({
+      sections: this.state.sections.filter((u) => u._id !== id),
+    });
   }
   render() {
     return (
@@ -94,11 +96,11 @@ class UsersList extends Component {
               <th>ویرایش</th>
             </tr>
           </thead>
-          <tbody>{this.UserList()}</tbody>
+          <tbody>{this.SectionList()}</tbody>
         </table>
       </div>
     );
   }
 }
 
-export default UsersList;
+export default SectionsList;

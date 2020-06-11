@@ -128,7 +128,7 @@ class StudentDetail extends Component {
                 readOnly
                 required
                 className="form-control"
-                value={this.state.dateOfBirth.toString().substring(0, 9)}
+                value={this.state.dateOfBirth.toString().substring(0, 10)}
               />
             </div>
             <div style={{ width: "200px", margin: "0.5% 1%" }}>
@@ -137,7 +137,7 @@ class StudentDetail extends Component {
                 readOnly
                 required
                 className="form-control"
-                value={this.state.lastEditDate.toString().substring(0, 9)}
+                value={this.state.lastEditDate.toString().substring(0, 10)}
               />
             </div>
             <div style={{ width: "200px", margin: "0.5% 1%" }}>
@@ -146,7 +146,9 @@ class StudentDetail extends Component {
                 readOnly
                 required
                 className="form-control"
-                value={this.state.lastSamaUpdateDate.toString().substring(0, 9)}
+                value={this.state.lastSamaUpdateDate
+                  .toString()
+                  .substring(0, 10)}
               />
             </div>
           </div>

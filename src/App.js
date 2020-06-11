@@ -20,6 +20,10 @@ import EditUser from "./pages/users/edit-user";
 import StudentsList from "./pages/students/students-list";
 import StudentDetail from "./pages/students/student-detail";
 
+import SectionsList from "./pages/sections/sections-list";
+import CreateSection from "./pages/sections/create-section";
+import EditSection from "./pages/sections/edit-section";
+
 import Reports from "./pages/reports";
 
 function App() {
@@ -42,6 +46,9 @@ function App() {
 
           <Route path="/students/details/:id" component={StudentDetail} />
           <Route path="/students" component={StudentsList} />
+
+          <Route path="/sections/add" component={CreateSection} />
+          <Route path="/sections" component={SectionsList} />
 
           <Route path="/reports" component={Reports} />
 
