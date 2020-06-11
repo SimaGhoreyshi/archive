@@ -40,10 +40,12 @@ class Login extends Component {
     const { email, password, users } = this.state;
     console.log(email + password);
 
-    const validation = users.map((u) => {
-      if (u.email === email && u.password === password) return true;
-      else return false;
-    });
+    const validation = false;
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email === email && users[i].password === password)
+        validation = true;
+      else validation = false;
+    }
     console.log(validation);
   }
 
