@@ -25,6 +25,7 @@ const usersRouter = require("./routes/users");
 const studentsRouter = require("./routes/students");
 const sectionsRouter = require("./routes/sections");
 
+app.use("/uploads", express.static("uploades"));
 app.use("/users", usersRouter);
 app.use("/students", studentsRouter);
 app.use("/sections", sectionsRouter);

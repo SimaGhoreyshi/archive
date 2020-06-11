@@ -37,6 +37,8 @@ router.route("/add").post((req, res) => {
   const newStudent = new Student({
     studentNumber,
     firstName,
+    field,
+    birthCertificate,
     lastName,
     phoneNumber,
     enteringYear,
@@ -60,19 +62,17 @@ router.route("/add").post((req, res) => {
 router.route("/edit/:id").post((req, res) => {
   Student.findById(req.params.id)
     .then((student) => {
-      const studentNumber = Number(req.body.studentNumber);
-      const firstName = req.body.firstName;
-      const lastName = req.body.lastName;
-      const phoneNumber = Number(req.body.phoneNumber);
-      const enteringYear = Number(req.body.enteringYear);
-      const college = req.body.college;
-      const grade = req.body.grade;
-      const nationalCode = Number(req.body.nationalCode);
-      const dateOfBirth = Number(req.body.dateOfBirth);
-      const lastEditDate = Date(req.body.lastEditDate);
-      const lastSamaUpdateDate = Date(req.body.lastSamaUpdateDate);
-
-      console.log(student);
+      student.studentNumber = Number(req.body.studentNumber);
+      student.firstName = req.body.firstName;
+      student.lastName = req.body.lastName;
+      student.phoneNumber = Number(req.body.phoneNumber);
+      student.enteringYear = Number(req.body.enteringYear);
+      student.college = req.body.college;
+      student.grade = req.body.grade;
+      student.nationalCode = Number(req.body.nationalCode);
+      student.dateOfBirth = Number(req.body.dateOfBirth);
+      student.lastEditDate = Date(req.body.lastEditDate);
+      student.lastSamaUpdateDate = Date(req.body.lastSamaUpdateDate);
 
       student
         .save()

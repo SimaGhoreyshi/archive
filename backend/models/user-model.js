@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const usersSchema = new Schema(
@@ -34,6 +33,10 @@ const usersSchema = new Schema(
     registerDate: {
       type: Date,
       required: true,
+    },
+
+    profilePic: {
+      type: String,
     },
   },
   {

@@ -14,6 +14,7 @@ class CreateUser extends Component {
       phoneNumber: 0,
       registerDate: new Date(),
       role: false,
+      profilePic: "https://image.flaticon.com/icons/svg/1738/1738691.svg",
     };
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -22,6 +23,7 @@ class CreateUser extends Component {
     this.onChangeLastName = this.onChangeLastName.bind(this);
     this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
     this.onChangeRole = this.onChangeRole.bind(this);
+    this.onChangeProfilePic = this.onChangeProfilePic.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -61,6 +63,13 @@ class CreateUser extends Component {
     });
   }
 
+  onChangeProfilePic(e) {
+    this.setState({
+      profilePic: URL.createObjectURL(e.target.files[0]),
+    });
+    console.log(e.target.files[0]);
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -71,6 +80,7 @@ class CreateUser extends Component {
       lastName: this.state.lastName,
       phoneNumber: this.state.phoneNumber,
       role: this.state.role,
+      profilePic: this.state.profilePic,
     };
 
     console.log(user);
@@ -89,7 +99,7 @@ class CreateUser extends Component {
           <span className="badge badge-info ">ایجاد اپراتور جدید</span>
         </h2>
         <br />
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} encType="multipart/form-data">
           <div className="row">
             <div className="input-group col">
               <div className="input-group-prepend">
@@ -144,7 +154,22 @@ class CreateUser extends Component {
               </div>
             </div>
           </div>
-
+          <div className="row">
+            <div className="col">
+              <div className="input-group card">
+                <div className="card-body">
+                  <img src={this.state.profilePic} className="rounded-circle" />
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    name="profilePic"
+                    onChangeCapture={this.onChangeProfilePic}
+                  />
+                  <p>عکس پروفایل</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="input-group col">
               <input

@@ -11,6 +11,7 @@ class EditUser extends Component {
       lastName: "",
       phoneNumber: 0,
       role: false,
+      profilePic: "https://image.flaticon.com/icons/svg/1738/1738691.svg",
     };
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
@@ -23,12 +24,18 @@ class EditUser extends Component {
     axios
       .get("http://localhost:5000/users/" + this.props.match.params.id)
       .then((res) => {
+        const pic = "https://image.flaticon.com/icons/svg/1738/1738691.svg";
+
+        if (res.data.profilePic !== null) {
+          const pic = res.data.profilePics;
+        }
         this.setState({
           email: res.data.email,
           firstName: res.data.firstName,
           lastName: res.data.lastName,
           phoneNumber: Number(res.data.phoneNumber),
           role: Boolean(res.data.role),
+          profilePic: pic,
         });
       })
       .catch(function (error) {
@@ -66,6 +73,13 @@ class EditUser extends Component {
     });
   }
 
+  onChangeProfilePic(e) {
+    this.setState({
+      profilePic: URL.createObjectURL(e.target.files[0]),
+    });
+    console.log(e.target.files[0]);
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -75,6 +89,7 @@ class EditUser extends Component {
       lastName: this.state.lastName,
       phoneNumber: Number(this.state.phoneNumber),
       role: Boolean(this.state.role),
+      profilePic: this.state.profilePic,
     };
 
     console.log(this.state.lastName);
@@ -119,6 +134,20 @@ class EditUser extends Component {
                 value={this.state.lastName}
                 onChange={this.onChangeLastName}
               />
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-group card">
+              <div className="card-body">
+                <img src={this.state.profilePic} className="rounded-circle" />
+                <input
+                  type="file"
+                  className="form-control-file"
+                  name="profilePic"
+                  onChangeCapture={this.onChangeProfilePic}
+                />
+                <p>عکس پروفایل</p>
+              </div>
             </div>
           </div>
           <div className="row">

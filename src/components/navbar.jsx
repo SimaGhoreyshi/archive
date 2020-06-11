@@ -43,7 +43,7 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item dropdown">
-            <NavLink
+            <Link
               className="nav-link dropdown-toggle"
               to="#"
               id="navbarDropdownMenuLink"
@@ -52,7 +52,7 @@ const NavBar = () => {
               aria-expanded="false"
             >
               کاربران
-            </NavLink>
+            </Link>
             <div
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"

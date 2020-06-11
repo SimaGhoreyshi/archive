@@ -4,7 +4,6 @@ import axios from "axios";
 
 const Section = (props) => {
   const date = props.section.registerDate.toString().substring(0, 10);
-  const id = props.section._id;
 
   return (
     <tr>
