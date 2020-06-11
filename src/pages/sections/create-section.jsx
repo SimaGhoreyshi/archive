@@ -83,6 +83,17 @@ class CreateSection extends Component {
         <br />
         <form onSubmit={this.onSubmit}>
           <div className="input-group ">
+            <input
+              required
+              type="text"
+              className="form-control"
+              placeholder="عنوان"
+              aria-label="title"
+              value={this.state.title}
+              onChange={this.onChangeTitle}
+            ></input>
+          </div>
+          <div className="input-group ">
             <label>انتخاب مدیر</label>
             <select
               ref="userInput"
@@ -99,18 +110,6 @@ class CreateSection extends Component {
                 );
               })}
             </select>
-          </div>
-
-          <div className="input-group ">
-            <input
-              required
-              type="text"
-              className="form-control"
-              placeholder="عنوان"
-              aria-label="title"
-              value={this.state.title}
-              onChange={this.onChangeTitle}
-            ></input>
           </div>
           <div className="input-group">
             <input
