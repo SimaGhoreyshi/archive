@@ -9,11 +9,11 @@
 .badge {
   padding: 1%;
 }
-.card {
+.user-card {
   width: 100%;
   height: 50vh;
 }
-.card-body {
+.user-card-body {
   margin: 0.5%;
 }
 .rounded-circle {

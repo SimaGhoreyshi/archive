@@ -8,7 +8,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <br />
-        <Link className="card hover-pulse" to="#">
+        <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-file-alt"
             style={{ fontSize: "800%", padding: "10% 23%", color: "#a3a3a3" }}
@@ -17,7 +17,7 @@ class Dashboard extends Component {
             <p className="card-text">اسناد ثبت شده</p>
           </div>
         </Link>
-        <Link className="card hover-pulse" to="#">
+        <Link className="card hover-pulse my-card" to="#">
           <i
             className="far fa-file-alt"
             style={{ fontSize: "800%", padding: "10% 23% ", color: "#d90b2d" }}
@@ -26,7 +26,7 @@ class Dashboard extends Component {
             <p className="card-text">تغییرات بررسی نشده</p>
           </div>
         </Link>
-        <Link className="card hover-pulse" to="#">
+        <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-user-graduate"
             style={{ fontSize: "800%", padding: "10% 21% ", color: "#a307e6" }}
@@ -35,7 +35,7 @@ class Dashboard extends Component {
             <p className="card-text">دانشجویان</p>
           </div>
         </Link>
-        <Link className="card hover-pulse" to="#">
+        <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-user-cog"
             style={{ fontSize: "800%", padding: "10% 8%", color: "#ffdd00" }}
@@ -44,7 +44,7 @@ class Dashboard extends Component {
             <p className="card-text">اپراتورها</p>
           </div>
         </Link>
-        <Link className="card hover-pulse" to="#">
+        <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-user-edit"
             style={{ fontSize: "800%", padding: "10% 8% ", color: "#1dd150" }}

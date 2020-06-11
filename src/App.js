@@ -26,6 +26,8 @@ import EditSection from "./pages/sections/edit-section";
 
 import Reports from "./pages/reports";
 
+import Login from "./pages/login";
+
 function App() {
   return (
     <React.Fragment>
@@ -35,11 +37,6 @@ function App() {
       <br />
       <div>
         <Switch>
-          <Route path="/user-info" component={UserInfo} />
-          <Route path="/areas" component={Areas} />
-          <Redirect exact from="/" to="/user-info" />
-          <Route path="/dashboard" component={Dashboard} />
-
           <Route path="/users/add" component={CreateUser} />
           <Route path="/users/edit/:id" component={EditUser} />
           <Route path="/users" component={UsersList} />
@@ -52,6 +49,14 @@ function App() {
           <Route path="/sections" component={SectionsList} />
 
           <Route path="/reports" component={Reports} />
+
+          <Route path="/login" component={Login} />
+
+          <Route path="/user-info" component={UserInfo} />
+          <Route path="/areas" component={Areas} />
+          <Redirect exact from="/" to="/user-info" />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/" component={UserInfo} />
 
           <Redirect to="/not-found" />
         </Switch>

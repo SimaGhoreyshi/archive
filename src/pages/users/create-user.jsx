@@ -156,9 +156,13 @@ class CreateUser extends Component {
           </div>
           <div className="row">
             <div className="col">
-              <div className="input-group card">
-                <div className="card-body">
-                  <img src={this.state.profilePic} className="rounded-circle" />
+              <div className="input-group card user-card">
+                <div className="card-body user-card-body">
+                  <img
+                    alt="profile picture"
+                    src={this.state.profilePic}
+                    className="rounded-circle"
+                  />
                   <input
                     type="file"
                     className="form-control-file"
