@@ -48,6 +48,7 @@ function App() {
           <Route path="/students" component={StudentsList} />
 
           <Route path="/sections/add" component={CreateSection} />
+          <Route path="/sections/edit/:id" component={EditSection} />
           <Route path="/sections" component={SectionsList} />
 
           <Route path="/reports" component={Reports} />

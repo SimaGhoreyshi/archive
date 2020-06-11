@@ -34,21 +34,13 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-//Delete
-router.route("/:id").delete((req, res) => {
-  Section.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Section deleted."))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
 //UPDATE
 router.route("/edit/:id").post((req, res) => {
   Section.findById(req.params.id)
-    .then((seciton) => {
-      section.title = req.date.title;
-      section.managerName = req.date.managerName;
-      section.phoneNumber = Number(req.date.phoneNumber);
-      section.registerDate = Date(req.date.registerDate);
+    .then((section) => {
+      section.title = req.body.title;
+      section.managerName = req.body.managerName;
+      section.phoneNumber = Number(req.body.phoneNumber);
 
       console.log(section);
 
