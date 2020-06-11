@@ -8,6 +8,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      users: [],
     };
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -25,12 +26,25 @@ class Login extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+
     axios
-      .post("/auth/getToken", {
-        email: this.state.email,
-        password: this.state.password,
+      .get("http://localhost:5000/users")
+      .then((res) => {
+        this.setState({ users: res.data });
+        console.log(this.state.users);
       })
-      .then((res) => localStorage.setItem("jwt", res.data));
+      .catch((err) => {
+        console.log(err);
+      });
+
+    const { email, password, users } = this.state;
+    console.log(email + password);
+
+    const validation = users.map((u) => {
+      if (u.email === email && u.password === password) return true;
+      else return false;
+    });
+    console.log(validation);
   }
 
   render() {
