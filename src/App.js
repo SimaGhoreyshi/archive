@@ -27,7 +27,7 @@ import EditSection from "./pages/sections/edit-section";
 import Reports from "./pages/reports";
 
 import axios from "axios";
-let validation = true;
+let validation = false;
 class App extends Component {
   constructor() {
     super();
