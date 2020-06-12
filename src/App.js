@@ -56,6 +56,7 @@ class App extends Component {
       .get("http://localhost:5000/users")
       .then((res) => {
         this.setState({ users: res.data });
+        console.log(this.state.users);
       })
       .catch((err) => {
         console.log(err);
@@ -78,10 +79,14 @@ class App extends Component {
   render() {
     if (validation === false) {
       return (
-        <div className="container center">
-          <form onSubmit={this.onSubmit}>
+        <div className="loginBox">
+          <form onSubmit={this.onSubmit} className="loginForm">
+            <img
+              src="https://image.flaticon.com/icons/svg/2038/2038116.svg"
+              className="login-logo"
+            />
             <input
-              className="form-control"
+              className="inputField"
               type="text"
               placeholder="ایمیل"
               name="email"
@@ -89,15 +94,16 @@ class App extends Component {
               onChange={this.onChangeEmail}
             />
             <input
-              className="form-control"
+              className="inputField"
               type="text"
               placeholder="کلمه عبور"
               name="password"
               value={this.state.password}
               onChange={this.onChangePassword}
             />
+
             <button
-              className="btn btn-primary"
+              className="btnSubmit"
               value="submit"
               onClick={this.onSubmit}
             >
