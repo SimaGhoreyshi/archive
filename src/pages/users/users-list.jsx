@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./users-list.css";
 
 const User = (props) => {
   const date = props.user.registerDate.toString();
@@ -83,8 +84,12 @@ class UsersList extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <table className="table table-striped">
+      <div className="container userTbl">
+        <h2>
+          <span className="badge badge-info ">لیست اپراتورها</span>
+        </h2>
+        <br />
+        <table className="table table-striped myTbl">
           <thead>
             <tr>
               <th scope="col">نام کامل</th>

@@ -1,20 +1,77 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./dashboard.css";
 
 class Areas extends Component {
   state = {};
   render() {
     return (
-      <div
-        className="btn-group-vertical my-10"
-        role="group"
-        aria-label="Basic example"
-        style={{ float: "right", margin: "10vh 5vw " }}
-      >
-        <button className="btn btn-primary btn-lg my-1">انتخاب ناحیه</button>
-        <button className="btn btn-primary btn-lg my-1">فارغ التحصیلان</button>
-        <button className="btn btn-primary btn-lg my-1">بایگانی</button>
-        <button className="btn btn-primary btn-lg my-1">پذیرش</button>
-        <button className="btn btn-primary btn-lg my-1">تحصیلات تکمیلی</button>
+      <div className="container">
+        <Link
+          className="card hover-pulse my-card"
+          to="#"
+          style={{ minWidth: "12vw" }}
+        >
+          <i
+            className="fas fa-layer-group"
+            style={{ fontSize: "800%", padding: "10% 12%", color: "#ce7dff" }}
+          ></i>
+          <div className="card-body">
+            <p className="card-text">انتخاب ناحیه</p>
+          </div>
+        </Link>
+        <Link
+          className="card hover-pulse my-card"
+          to="#"
+          style={{ minWidth: "12vw" }}
+        >
+          <i
+            class="fas fa-user-graduate"
+            style={{ fontSize: "800%", padding: "10% 20%", color: "#ce7dff" }}
+          ></i>
+          <div className="card-body">
+            <p className="card-text">فارغ التحصیلان</p>
+          </div>
+        </Link>
+        <Link
+          className="card hover-pulse my-card"
+          to="#"
+          style={{ minWidth: "12vw" }}
+        >
+          <i
+            className="fas fa-inbox"
+            style={{ fontSize: "800%", padding: "10% 10%", color: "#ce7dff" }}
+          ></i>
+          <div className="card-body">
+            <p className="card-text">بایگانی</p>
+          </div>
+        </Link>
+        <Link
+          className="card hover-pulse my-card"
+          to="#"
+          style={{ minWidth: "12vw" }}
+        >
+          <i
+            class="fas fa-user-check"
+            style={{ fontSize: "800%", padding: "10% 5%", color: "#ce7dff" }}
+          ></i>
+          <div className="card-body">
+            <p className="card-text">پذیرش</p>
+          </div>
+        </Link>
+        <Link
+          className="card hover-pulse my-card"
+          to="#"
+          style={{ minWidth: "12vw" }}
+        >
+          <i
+            class="fas fa-university"
+            style={{ fontSize: "800%", padding: "10% 23%", color: "#ce7dff" }}
+          ></i>
+          <div className="card-body">
+            <p className="card-text">تحصیلات تکمیلی</p>
+          </div>
+        </Link>
       </div>
     );
   }

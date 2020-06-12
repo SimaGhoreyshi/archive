@@ -10,7 +10,7 @@ import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 
 import Areas from "./pages/areas";
-import UserInfo from "./pages/user-info";
+import UserInfo from "./pages/user-info/user-info";
 import Dashboard from "./pages/dashboard";
 
 import UsersList from "./pages/users/users-list";
@@ -27,7 +27,7 @@ import EditSection from "./pages/sections/edit-section";
 import Reports from "./pages/reports";
 
 import axios from "axios";
-let validation = false;
+let validation = true;
 class App extends Component {
   constructor() {
     super();
@@ -37,11 +37,20 @@ class App extends Component {
       password: "",
       users: [],
       authenticatedUser: {},
+      //  style :{
+      //   fontSize: 60,
+      //   opacity: 0,
+      //   transition: 'all 2s ease',
+      // }
     };
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+    // this.transitionEnd = this.transitionEnd.bind(this);
+    // this.mountStyle = this.mountStyle.bind(this);
+    // this.unMountStyle = this.unMountStyle.bind(this);
   }
 
   onChangeEmail(e) {
@@ -85,6 +94,7 @@ class App extends Component {
               src="https://image.flaticon.com/icons/svg/2038/2038116.svg"
               className="login-logo"
             />
+            <p className="enter">ورود به آرشیو دانشجویی</p>
             <input
               type="text"
               placeholder="ایمیل"
@@ -113,7 +123,13 @@ class App extends Component {
     } else {
       return (
         <React.Fragment>
-          <NavBar username={this.state.email} />
+          <NavBar
+            username={
+              this.state.authenticatedUser.firstName +
+              " " +
+              this.state.authenticatedUser.lastName
+            }
+          />
           <br />
           <br />
           <br />
@@ -127,6 +143,11 @@ class App extends Component {
                     firstName={this.state.authenticatedUser.firstName}
                     lastName={this.state.authenticatedUser.lastName}
                     phoneNumber={this.state.authenticatedUser.phoneNumber}
+                    profilePic={
+                      this.state.authenticatedUser.profilePic === null
+                        ? "https://image.flaticon.com/icons/svg/1738/1738691.svg"
+                        : this.state.authenticatedUser.profilePic
+                    }
                   />
                 )}
               />

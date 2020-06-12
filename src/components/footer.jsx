@@ -9,16 +9,19 @@ class Footer extends Component {
           position: "fixed",
           bottom: "0",
           width: "100vw",
-          height: "5vh",
-          backgroundColor: "#bcc5cc",
+          backgroundColor: "rgba(44, 44, 44, 0.651)",
+          color: "#fff",
           overflowX: "hidden !important",
         }}
       >
         <footer className="footer">
           <div className="container">
             <p
-              className="text-muted"
-              style={{ paddingTop: ".5%", textAlign: "end" }}
+              style={{
+                paddingTop: ".2%",
+                textAlign: "end",
+                textDecorationColor: "#fff",
+              }}
             >
               © 2015 Copyright.
             </p>

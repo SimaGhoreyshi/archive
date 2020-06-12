@@ -1,0 +1,47 @@
+.studentTbl {
+  width: 70vw;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  width: min-content;
+  padding: 1% 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.myTble {
+  display: inline-table;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+}
+.searchBar {
+  border-radius: 10px;
+  width: 100%;
+}
+.myDropdown {
+  margin: 1% 1%;
+}
+.dropdown-item {
+  margin: 1% 1%;
+}
+.form-control {
+  margin: 0.5% 1%;
+  width: 200px;
+}
+.badge {
+  padding: 1%;
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: rgba(150, 193, 241, 0.418);
+  color: black;
+}
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+  background-color: rgba(188, 213, 241, 0.418);
+  color: black;
+}
+
+.table-striped > thead {
+  background-color: rgba(45, 149, 235, 0.521);
+  color: black;
+}

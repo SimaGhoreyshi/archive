@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./user-info.css";
 
 class UserInfo extends Component {
   render() {
@@ -6,20 +7,26 @@ class UserInfo extends Component {
     const firstName = this.props.firstName;
     const lastName = this.props.lastName;
     const phoneNumber = this.props.phoneNumber;
+    const profilePic = "https://image.flaticon.com/icons/svg/1738/1738691.svg";
 
     return (
-      <div className="container">
-        <h2>
-          <span className="badge badge-primary ">
-            کاربر {firstName + " " + lastName} خوش آمدید
-          </span>
+      <div className="container form">
+        <h2 className="welcome">
+          کاربر {firstName + " " + lastName} خوش آمدید
         </h2>
 
         <br />
         <form>
           <div className="row">
-            <div style={{ width: "200px", margin: "0.5% 1%" }}>
-              <p className="badge badge-info ">نام کامل</p>
+            <img
+              alt="profile picture"
+              src={profilePic}
+              className="rounded-circle"
+            />
+          </div>
+          <div className="row">
+            <div className="col" style={{ width: "200px", margin: "0.5% 1%" }}>
+              <label>نام کامل</label>
               <input
                 readOnly
                 required
@@ -29,13 +36,13 @@ class UserInfo extends Component {
               />
             </div>
 
-            <div style={{ width: "200px", margin: "0.5% 1%" }}>
-              <p className="badge badge-info">ایمیل</p>
+            <div className="col" style={{ width: "200px", margin: "0.5% 1%" }}>
+              <label>ایمیل</label>
               <input readOnly required className="form-control" value={email} />
             </div>
 
-            <div style={{ width: "200px", margin: "0.5% 1%" }}>
-              <p className="badge badge-info">شماره تماس</p>
+            <div className="col" style={{ width: "200px", margin: "0.5% 1%" }}>
+              <label>شماره تماس</label>
               <input
                 readOnly
                 required

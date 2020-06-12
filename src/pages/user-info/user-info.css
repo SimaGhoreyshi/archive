@@ -1,22 +1,6 @@
 * {
   direction: rtl;
   text-align: right;
-  font-family: Sahel;
-}
-.form-control {
-  direction: rtl;
-}
-.input-group {
-  width: 30vw;
-  margin: 1%;
-}
-.input-group-append {
-  margin-left: 2%;
-}
-
-* {
-  direction: rtl;
-  text-align: right;
 }
 input[type="number"] {
   border: 1px solid dimgray;
@@ -28,10 +12,10 @@ input[type="text"] {
   color: #fff;
 }
 
-p {
+.welcome {
   color: #fff;
-  font-size: 20px;
-  margin: 5px 15px;
+  font-size: 30px;
+  text-align: center;
 }
 label {
   color: #fff;
@@ -47,4 +31,11 @@ label {
 }
 .badge {
   padding: 1%;
+}
+.rounded-circle {
+  margin-bottom: 5px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin: auto;
 }

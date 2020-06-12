@@ -1,0 +1,166 @@
+.navbar {
+  font-family: Sahel;
+  background-color: rgba(44, 44, 44, 0.651);
+  height: 50px;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 50px;
+  box-sizing: border-box;
+  box-shadow: 1px 0.5px 15px gray;
+  z-index: 5;
+}
+.user {
+  float: right;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  line-height: 50px;
+}
+.navbarNav {
+  float: left;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  list-style: none;
+}
+.nav-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(223, 217, 217);
+  position: relative;
+  display: block;
+  height: 50px;
+  padding: 0 20px;
+  line-height: 50px;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.user:before {
+  background: #70d6ff;
+}
+.user:hover {
+  color: #00648b;
+  transition: transform 0.5s;
+  font-weight: bold;
+}
+.userDrop {
+  background: #70d6ff;
+  text-align: right;
+  margin-left: 17px;
+}
+.userItem {
+  font-weight: bold;
+  color: #00648b;
+}
+.userItem:hover {
+  background: #98e2ff;
+}
+
+.reports:before {
+  background: #ffd166;
+}
+.reports:hover {
+  color: #be8500;
+  transition: transform 0.5s;
+  font-weight: bold;
+}
+.reportsDrop {
+  background: #ffd166;
+}
+.reportsItem {
+  font-weight: bold;
+  text-align: right;
+  color: #be8500;
+}
+.reportsItem:hover {
+  background: #ffd77b;
+}
+
+.users:before {
+  background: #06d6a0;
+}
+.users:hover {
+  color: #00664b;
+
+  transition: transform 0.5s;
+  font-weight: bold;
+}
+.usersDrop {
+  background: #06d6a0;
+}
+.usersItem {
+  font-weight: bold;
+  color: #00664b;
+  text-align: right;
+}
+.usersItem:hover {
+  background: #38f7c4;
+}
+
+.myDashboard:before {
+  background: #1984ff;
+}
+.myDashboard:hover {
+  color: #004ca3;
+
+  transition: transform 0.5s;
+  font-weight: bold;
+}
+
+.area:before {
+  background: #a347fa;
+}
+.area:hover {
+  color: #5700a8;
+
+  transition: transform 0.5s;
+  font-weight: bold;
+}
+
+.sections:before {
+  background: #ef476f;
+}
+
+.sections:hover {
+  color: #70182d;
+
+  transition: transform 0.5s;
+  font-weight: bold;
+}
+.sectionsDrop {
+  background: #ef476f;
+}
+.sectionItem {
+  color: #70182d;
+  font-weight: bold;
+  text-align: right;
+}
+.sectionItem:hover {
+  background: #fc7594;
+}
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: right;
+  z-index: -1;
+  transform: scaleY(0);
+  transition: transform 0.5s;
+}
+.nav-link:hover:before {
+  transform-origin: left;
+  transform: scaleY(1);
+}

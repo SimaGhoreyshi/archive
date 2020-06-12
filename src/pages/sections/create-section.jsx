@@ -76,7 +76,7 @@ class CreateSection extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container form">
         <h2>
           <span className="badge badge-info ">ایجاد بخش جدید</span>
         </h2>

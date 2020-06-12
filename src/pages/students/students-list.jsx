@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./students-list.css";
 
 const Student = (props) => {
   ////   const date = props.student.registerDate.toString();
@@ -137,16 +138,13 @@ class StudentsList extends Component {
 
   render() {
     return (
-      <div className="table-responsive">
-        <br />
-        <h1 style={{ marginRight: "4vw" }}>
-          <span className="badge">مدیریت دانشجویان</span>
-        </h1>
-        <br />
-        <div className="searchBar" style={{ margin: "0.1% 5%" }}>
+      <div className="studentTbl">
+        <div className="searchBar">
+          <h2>
+            <span className="badge badge-info ">مدیریت دانشجویان</span>
+          </h2>
           <div className="row">
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="firstName"
               type="text"
               placeholder="نام"
@@ -155,7 +153,6 @@ class StudentsList extends Component {
               onClick={this.onClickField}
             />
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="lastName"
               type="text"
               placeholder="نام خانوادگی"
@@ -164,7 +161,6 @@ class StudentsList extends Component {
               onClick={this.onClickField}
             />
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="nationalCode"
               type="text"
               placeholder="کد ملی"
@@ -173,7 +169,6 @@ class StudentsList extends Component {
               onClick={this.onClickField}
             />
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="birthCertificateCode"
               type="text"
               placeholder="شماره شناسنامه"
@@ -181,8 +176,9 @@ class StudentsList extends Component {
               onChange={this.onChangeField}
               onClick={this.onClickField}
             />
+          </div>
+          <div className="row">
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="studentNumber"
               type="text"
               placeholder="کد دانشجویی"
@@ -191,7 +187,6 @@ class StudentsList extends Component {
               onClick={this.onClickField}
             />
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="enteringYear"
               type="text"
               placeholder="سال ورود"
@@ -200,7 +195,6 @@ class StudentsList extends Component {
               onClick={this.onClickField}
             />
             <input
-              style={{ width: "200px", margin: "0.1% 1%" }}
               name="graduationYear"
               type="text"
               placeholder="سال فراغت از تحصیل"
@@ -210,7 +204,7 @@ class StudentsList extends Component {
             />
           </div>
           <div className="row">
-            <div className="dropdown" style={{ margin: "1% 1%" }}>
+            <div className="dropdown myDropdown">
               <button
                 className="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown"
@@ -259,7 +253,7 @@ class StudentsList extends Component {
               </div>
             </div>
 
-            <div className="dropdown" style={{ margin: "1% 1%" }}>
+            <div className="dropdown myDropdown">
               <button
                 className="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown"
@@ -320,7 +314,7 @@ class StudentsList extends Component {
               </div>
             </div>
 
-            <div className="dropdown" style={{ margin: "1% 1%" }}>
+            <div className="dropdown myDropdown">
               <button
                 className="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown"
@@ -368,7 +362,7 @@ class StudentsList extends Component {
                 </p>
               </div>
             </div>
-            <div className="dropdown" style={{ margin: "1% 1%" }}>
+            <div className="dropdown myDropdown">
               <button
                 className="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown"
@@ -477,7 +471,7 @@ class StudentsList extends Component {
               </div>
             </div>
 
-            <div className="dropdown" style={{ margin: "1% 1%" }}>
+            <div className="dropdown myDropdown">
               <button
                 className="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown"
@@ -511,7 +505,7 @@ class StudentsList extends Component {
                 </p>
               </div>
             </div>
-            <div className="dropdown" style={{ margin: "1% 1%" }}>
+            <div className="dropdown myDropdown">
               <button
                 className="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown"
@@ -528,7 +522,7 @@ class StudentsList extends Component {
           </div>
         </div>
         <br />
-        <table className="table table-striped">
+        <table className="table table-striped table-responsive myTble">
           <thead>
             <tr>
               <th>?</th>

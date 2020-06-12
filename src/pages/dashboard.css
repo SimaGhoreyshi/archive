@@ -1,15 +1,27 @@
 .dashboard {
-  overflow-x: hidden;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10%;
 }
 .my-card {
-  width: 190px;
+  background: rgba(0, 0, 0, 0.4);
+  width: fit-content;
+  min-width: 12vw;
+  text-align: center;
+  height: 250px;
   float: right;
   margin: 1%;
 }
+
 .hover-pulse:hover {
   animation: pulse;
   animation-duration: 1s;
+  text-decoration: none;
 }
 .card-text {
   text-align: center;
+  text-decoration: none;
+  color: #fff;
 }

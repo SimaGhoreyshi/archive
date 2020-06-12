@@ -94,7 +94,7 @@ class CreateUser extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container form">
         <h2>
           <span className="badge badge-info ">ایجاد اپراتور جدید</span>
         </h2>
@@ -102,24 +102,23 @@ class CreateUser extends Component {
         <form onSubmit={this.onSubmit} encType="multipart/form-data">
           <div className="row">
             <div className="input-group col">
-              <div className="input-group-prepend">
-                <span className="input-group-text">نام و نام خانوادگی</span>
-              </div>
               <input
                 required
                 type="text"
                 aria-label="First name"
                 placeholder="نام"
-                className="form-control"
+                className="form-control col"
                 value={this.state.firstName}
                 onChange={this.onChangeFirstName}
               />
+            </div>
+            <div className="input-group col">
               <input
                 required
                 type="text"
                 aria-label="Last name"
                 placeholder="نام خانوادگی"
-                className="form-control"
+                className="form-control col"
                 value={this.state.lastName}
                 onChange={this.onChangeLastName}
               />
@@ -135,7 +134,7 @@ class CreateUser extends Component {
                 aria-label="Email"
                 value={this.state.email}
                 onChange={this.onChangeEmail}
-              ></input>
+              />
             </div>
             <div className="input-group col-4">
               <input
@@ -144,13 +143,10 @@ class CreateUser extends Component {
                 className="form-control"
                 placeholder="شماره همراه"
                 aria-label="Phone number"
-                value={this.state.phoneNumber}
                 onChange={this.onChangePhoneNumber}
               />
               <div className="input-group-append">
-                <span className="input-group-text" id="basic-addon2">
-                  09
-                </span>
+                <span className="input-group-text">09</span>
               </div>
             </div>
           </div>

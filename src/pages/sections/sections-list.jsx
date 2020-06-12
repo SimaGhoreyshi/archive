@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./sections-list.css";
 
 const Section = (props) => {
   const date = props.section.registerDate.toString().substring(0, 10);
@@ -57,7 +58,7 @@ class SectionsList extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container sectionTbl">
         <h2>
           <span className="badge badge-info ">مدیریت بخش ها</span>
         </h2>

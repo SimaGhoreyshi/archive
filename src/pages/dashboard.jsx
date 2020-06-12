@@ -6,8 +6,7 @@ class Dashboard extends Component {
   state = {};
   render() {
     return (
-      <div className="dashboard container">
-        <br />
+      <div className="dashboard">
         <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-file-alt"
@@ -20,7 +19,7 @@ class Dashboard extends Component {
         <Link className="card hover-pulse my-card" to="#">
           <i
             className="far fa-file-alt"
-            style={{ fontSize: "800%", padding: "10% 23% ", color: "#d90b2d" }}
+            style={{ fontSize: "800%", padding: "10% 28% ", color: "#d90b2d" }}
           ></i>
           <div className="card-body">
             <p className="card-text">تغییرات بررسی نشده</p>
@@ -29,7 +28,7 @@ class Dashboard extends Component {
         <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-user-graduate"
-            style={{ fontSize: "800%", padding: "10% 21% ", color: "#a307e6" }}
+            style={{ fontSize: "800%", padding: "10% 18% ", color: "#a307e6" }}
           ></i>
           <div className="card-body">
             <p className="card-text">دانشجویان</p>
@@ -38,7 +37,7 @@ class Dashboard extends Component {
         <Link className="card hover-pulse my-card" to="#">
           <i
             className="fas fa-user-cog"
-            style={{ fontSize: "800%", padding: "10% 8%", color: "#ffdd00" }}
+            style={{ fontSize: "800%", padding: "10% 5%", color: "#ffdd00" }}
           ></i>
           <div className="card-body">
             <p className="card-text">اپراتورها</p>

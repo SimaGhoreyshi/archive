@@ -1,4 +1,33 @@
+@font-face {
+  font-family: Sahel;
+  src: url("http://fonts.codearena.ir/rastikerdar/sahel/sahel.eot");
+  src: url("http://fonts.codearena.ir/rastikerdar/sahel/sahel.eot?#iefix")
+      format("embedded-opentype"),
+    url("http://fonts.codearena.ir/rastikerdar/sahel/sahel.woff") format("woff"),
+    url("http://fonts.codearena.ir/rastikerdar/sahel/sahel.ttf")
+      format("truetype");
+  font-weight: normal;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  background: url("../src/img/bg2.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  backface-visibility: hidden;
+  font-family: Sahel;
+}
+
+.enter {
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+}
 .loginBox {
+  font-family: Sahel;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -39,7 +68,6 @@
 .login-logo {
   width: 30%;
   height: 30%;
-  overflow: hidden;
   position: absolute;
 
   transform: translate(0, -50%);
