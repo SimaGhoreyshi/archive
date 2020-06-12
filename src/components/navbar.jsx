@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="navbar-expand" id="navbarNav">
@@ -17,7 +17,7 @@ const NavBar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              UserInfo
+              {props.username}
             </Link>
             <div
               className="dropdown-menu"

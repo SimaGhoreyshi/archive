@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 
 import { Route, Redirect, Switch } from "react-router-dom";
@@ -26,46 +26,135 @@ import EditSection from "./pages/sections/edit-section";
 
 import Reports from "./pages/reports";
 
-import Login from "./pages/login";
+import axios from "axios";
+let validation = false;
+class App extends Component {
+  constructor() {
+    super();
 
-function App() {
-  return (
-    <React.Fragment>
-      <NavBar />
-      <br />
-      <br />
-      <br />
-      <div>
-        <Switch>
-          <Route path="/users/add" component={CreateUser} />
-          <Route path="/users/edit/:id" component={EditUser} />
-          <Route path="/users" component={UsersList} />
+    this.state = {
+      email: "",
+      password: "",
+      users: [],
+      authenticatedUser: {},
+    };
 
-          <Route path="/students/details/:id" component={StudentDetail} />
-          <Route path="/students" component={StudentsList} />
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
-          <Route path="/sections/add" component={CreateSection} />
-          <Route path="/sections/edit/:id" component={EditSection} />
-          <Route path="/sections" component={SectionsList} />
+  onChangeEmail(e) {
+    this.setState({ email: e.target.value });
+  }
 
-          <Route path="/reports" component={Reports} />
+  onChangePassword(e) {
+    this.setState({ password: e.target.value });
+  }
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/users")
+      .then((res) => {
+        this.setState({ users: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  onSubmit(e) {
+    e.preventDefault();
 
-          <Route path="/login" component={Login} />
+    const { email, password, users } = this.state;
 
-          <Route path="/user-info" component={UserInfo} />
-          <Route path="/areas" component={Areas} />
-          <Redirect exact from="/" to="/user-info" />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/" component={UserInfo} />
+    for (let i = 0; i < this.state.users.length; i++) {
+      if (users[i].email === email && users[i].password === password) {
+        validation = true;
+        this.setState({ authenticatedUser: users[i] });
+        this.forceUpdate();
+      } else validation = false;
+    }
+  }
 
-          <Redirect to="/not-found" />
-        </Switch>
-      </div>
-      <br />
-      <br />
-      <Footer />
-    </React.Fragment>
-  );
+  render() {
+    if (validation === false) {
+      return (
+        <div className="container center">
+          <form onSubmit={this.onSubmit}>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="ایمیل"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChangeEmail}
+            />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="کلمه عبور"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChangePassword}
+            />
+            <button
+              className="btn btn-primary"
+              value="submit"
+              onClick={this.onSubmit}
+            >
+              ورود
+            </button>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <NavBar username={this.state.email} />
+          <br />
+          <br />
+          <br />
+          <div>
+            <Switch>
+              <Route
+                path="/user-info"
+                render={() => (
+                  <UserInfo
+                    email={this.state.authenticatedUser.email}
+                    firstName={this.state.authenticatedUser.firstName}
+                    lastName={this.state.authenticatedUser.lastName}
+                    phoneNumber={this.state.authenticatedUser.phoneNumber}
+                  />
+                )}
+              />
+              <Route path="/users/add" component={CreateUser} />
+              <Route path="/users/edit/:id" component={EditUser} />
+              <Route path="/users" component={UsersList} />
+
+              <Route path="/students/details/:id" component={StudentDetail} />
+              <Route path="/students" component={StudentsList} />
+
+              <Route path="/sections/add" component={CreateSection} />
+              <Route path="/sections/edit/:id" component={EditSection} />
+              <Route path="/sections" component={SectionsList} />
+
+              <Route path="/reports" component={Reports} />
+
+              <Route path="/user-info" component={UserInfo} />
+              <Route path="/areas" component={Areas} />
+              <Redirect exact from="/" to="/user-info" />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/" component={UserInfo} />
+
+              <Redirect to="/not-found" />
+            </Switch>
+          </div>
+          <br />
+          <br />
+          <Footer />
+        </React.Fragment>
+      );
+    }
+  }
 }
 
 export default App;
