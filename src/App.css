@@ -3,8 +3,24 @@
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background: url("./img/bg.jpeg");
+  background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
+  backface-visibility: hidden;
+  animation: slidebg 15s ease 0s infinite;
+  animation-direction: alternate-reverse;
+  background-image: url("./img/bg1.jpg");
+}
+@keyframes slidebg {
+  0% {
+    background-image: url("./img/bg1.jpg");
+  }
+  50% {
+    background-image: url("./img/bg2.jpg");
+  }
+  100% {
+    background-image: url("./img/bg3.jpg");
+  }
 }
 .loginForm {
   position: absolute;
@@ -29,7 +45,7 @@
   left: calc(50% - 50px);
 }
 
-.inputField {
+.loginBox input[type="text"] {
   width: 100%;
   margin-bottom: 20px;
   border: none;
@@ -41,7 +57,8 @@
   font-size: 20px;
 }
 ::placeholder {
-  color: rgb(133, 148, 132);
+  color: rgba(190, 253, 255, 0.651);
+  font-size: 18px;
 }
 .btnSubmit {
   border: none;

@@ -86,7 +86,6 @@ class App extends Component {
               className="login-logo"
             />
             <input
-              className="inputField"
               type="text"
               placeholder="ایمیل"
               name="email"
@@ -94,7 +93,6 @@ class App extends Component {
               onChange={this.onChangeEmail}
             />
             <input
-              className="inputField"
               type="text"
               placeholder="کلمه عبور"
               name="password"
