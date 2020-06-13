@@ -79,7 +79,10 @@ class App extends Component {
     const { email, password, users } = this.state;
     console.log(this);
     for (let i = 0; i < this.state.users.length; i++) {
-      if (this.state.email === this.state.users[i].email) {
+      if (
+        email === this.state.users[i].email &&
+        password === this.state.users[i].password
+      ) {
         validation = true;
         this.setState({ authenticatedUser: users[0] });
         if (validation) break;
