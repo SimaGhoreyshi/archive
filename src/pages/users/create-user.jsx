@@ -155,7 +155,7 @@ class CreateUser extends Component {
               <div className="input-group card user-card">
                 <div className="card-body user-card-body">
                   <img
-                    alt="profile picture"
+                    alt="profile"
                     src={this.state.profilePic}
                     className="rounded-circle"
                   />

@@ -18,11 +18,7 @@ class UserInfo extends Component {
         <br />
         <form>
           <div className="row">
-            <img
-              alt="profile picture"
-              src={profilePic}
-              className="rounded-circle"
-            />
+            <img alt="profile " src={profilePic} className="rounded-circle" />
           </div>
           <div className="row">
             <div className="col" style={{ width: "200px", margin: "0.5% 1%" }}>

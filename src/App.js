@@ -27,7 +27,9 @@ import EditSection from "./pages/sections/edit-section";
 import Reports from "./pages/reports";
 
 import axios from "axios";
+
 let validation = false;
+
 class App extends Component {
   constructor() {
     super();
@@ -37,6 +39,7 @@ class App extends Component {
       password: "",
       users: [],
       authenticatedUser: {},
+      val: false,
       //  style :{
       //   fontSize: 60,
       //   opacity: 0,
@@ -46,8 +49,8 @@ class App extends Component {
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
+    this.onSubmitLogin = this.onSubmitLogin.bind(this);
+    this.render = this.render.bind(this);
     // this.transitionEnd = this.transitionEnd.bind(this);
     // this.mountStyle = this.mountStyle.bind(this);
     // this.unMountStyle = this.unMountStyle.bind(this);
@@ -71,26 +74,31 @@ class App extends Component {
         console.log(err);
       });
   }
-  onSubmit(e) {
+  onSubmitLogin = (e) => {
     e.preventDefault();
-
     const { email, password, users } = this.state;
-
+    console.log(this);
     for (let i = 0; i < this.state.users.length; i++) {
-      if (users[i].email === email && users[i].password === password) {
+      if (this.state.email === this.state.users[i].email) {
         validation = true;
-        this.setState({ authenticatedUser: users[i] });
+        this.setState({ authenticatedUser: users[0] });
+        if (validation) break;
         this.forceUpdate();
-      } else validation = false;
+      } else {
+        validation = false;
+      }
     }
-  }
+  };
 
   render() {
     if (validation === false) {
+      console.log("login");
+
       return (
         <div className="loginBox">
-          <form onSubmit={this.onSubmit} className="loginForm">
+          <form className="loginForm" onSubmit={this.onSubmitLogin}>
             <img
+              alt="logo"
               src="https://image.flaticon.com/icons/svg/2038/2038116.svg"
               className="login-logo"
             />
@@ -113,7 +121,7 @@ class App extends Component {
             <button
               className="btnSubmit"
               value="submit"
-              onClick={this.onSubmit}
+              onClick={this.onSubmitLogin}
             >
               ورود
             </button>
@@ -121,6 +129,8 @@ class App extends Component {
         </div>
       );
     } else {
+      console.log("website", validation);
+
       return (
         <React.Fragment>
           <NavBar
@@ -144,9 +154,7 @@ class App extends Component {
                     lastName={this.state.authenticatedUser.lastName}
                     phoneNumber={this.state.authenticatedUser.phoneNumber}
                     profilePic={
-                      this.state.authenticatedUser.profilePic === null
-                        ? "https://image.flaticon.com/icons/svg/1738/1738691.svg"
-                        : this.state.authenticatedUser.profilePic
+                      "https://image.flaticon.com/icons/svg/1738/1738691.svg"
                     }
                   />
                 )}
@@ -162,15 +170,26 @@ class App extends Component {
               <Route path="/sections/edit/:id" component={EditSection} />
               <Route path="/sections" component={SectionsList} />
 
+              <Route path="/areas" component={Areas} />
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/reports" component={Reports} />
 
-              <Route path="/user-info" component={UserInfo} />
-              <Route path="/areas" component={Areas} />
+              <Route
+                path="/"
+                render={() => (
+                  <UserInfo
+                    email={this.state.authenticatedUser.email}
+                    firstName={this.state.authenticatedUser.firstName}
+                    lastName={this.state.authenticatedUser.lastName}
+                    phoneNumber={this.state.authenticatedUser.phoneNumber}
+                    profilePic={
+                      "https://image.flaticon.com/icons/svg/1738/1738691.svg"
+                    }
+                  />
+                )}
+              />
               <Redirect exact from="/" to="/user-info" />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/" component={UserInfo} />
-
-              <Redirect to="/not-found" />
+              <Redirect exact to="/not-found" />
             </Switch>
           </div>
           <br />

@@ -26,9 +26,6 @@ class EditUser extends Component {
       .then((res) => {
         const pic = "https://image.flaticon.com/icons/svg/1738/1738691.svg";
 
-        if (res.data.profilePic !== null) {
-          const pic = res.data.profilePics;
-        }
         this.setState({
           email: res.data.email,
           firstName: res.data.firstName,
@@ -139,7 +136,11 @@ class EditUser extends Component {
           <div className="row">
             <div className="input-group card">
               <div className="card-body">
-                <img src={this.state.profilePic} className="rounded-circle" />
+                <img
+                  alt="profile"
+                  src={this.state.profilePic}
+                  className="rounded-circle"
+                />
                 <input
                   type="file"
                   className="form-control-file"
