@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./sections-list.css";
+import Pagination from "../../components/pagination";
 
 const Section = (props) => {
   const date = props.section.registerDate.toString().substring(0, 10);
@@ -33,6 +34,9 @@ class SectionsList extends Component {
     this.state = { sections: [] };
   }
 
+  handlePageChange = (page) => {
+    console.log(page);
+  };
   componentDidMount() {
     axios
       .get("http://localhost:5000/sections")
@@ -75,6 +79,11 @@ class SectionsList extends Component {
           </thead>
           <tbody>{this.SectionList()}</tbody>
         </table>
+        <Pagination
+          itemsCount={this.state.sections.length}
+          pageSize={10}
+          onPageChange={this.handlePageChange}
+        />
       </div>
     );
   }

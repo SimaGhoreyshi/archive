@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./edit-user.css";
 
 class EditUser extends Component {
   constructor(props) {
@@ -103,22 +104,17 @@ class EditUser extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container form">
         <h2>
           <span className="badge badge-primary ">ویرایش اپراتور</span>
         </h2>
         <form onSubmit={this.onSubmit}>
           <div className="row">
             <div className="input-group col">
-              <div className="input-group-prepend">
-                <span className="input-group-text">نام و نام خانوادگی</span>
-              </div>
               <input
                 required
                 type="text"
-                aria-label="First name"
-                placeholder="نام"
-                className="form-control"
+                className="form-control col "
                 value={this.state.firstName}
                 onChange={this.onChangeFirstName}
               />
@@ -127,14 +123,14 @@ class EditUser extends Component {
                 type="text"
                 aria-label="Last name"
                 placeholder="نام خانوادگی"
-                className="form-control"
+                className="form-control col  "
                 value={this.state.lastName}
                 onChange={this.onChangeLastName}
               />
             </div>
           </div>
           <div className="row">
-            <div className="input-group card">
+            <div className="input-group card user-card">
               <div className="card-body">
                 <img
                   alt="profile"

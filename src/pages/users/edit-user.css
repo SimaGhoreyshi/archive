@@ -1,0 +1,52 @@
+* {
+  direction: rtl;
+  text-align: right;
+}
+input[type="number"] {
+  border: 1px solid dimgray;
+  background: rgba(255, 255, 255, 0.5);
+
+  color: black;
+}
+input[type="text"] {
+  max-width: 400px;
+  border: 1px solid dimgray;
+  background: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+p {
+  color: #fff;
+  font-size: 20px;
+  margin: 5px 15px;
+}
+label {
+  color: #fff;
+  font-size: 20px;
+  margin: 5px 15px;
+}
+
+.form {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  width: 50vw;
+  padding: 1% 5%;
+}
+.badge {
+  padding: 1%;
+}
+.user-card {
+  background: rgba(255, 255, 255, 0.473);
+  width: 250px;
+  max-width: 250px;
+  height: 250px;
+}
+.user-card-body {
+  margin: 0.5%;
+}
+.rounded-circle {
+  margin-bottom: 5px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
