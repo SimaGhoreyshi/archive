@@ -1,4 +1,5 @@
 .navbar {
+  direction: rtl;
   font-family: Sahel;
   background-color: rgba(44, 44, 44, 0.651);
   height: 50px;
@@ -8,9 +9,8 @@
   top: 0;
   right: 0;
   width: 100vw;
-  height: 50px;
   box-sizing: border-box;
-  box-shadow: 1px 0.5px 15px gray;
+  box-shadow: 1px 0 15px rgb(131, 131, 131);
   z-index: 5;
 }
 .user {

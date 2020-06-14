@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./sections-list.css";
 import Pagination from "../../components/pagination";
+import { paginate } from "../../utils/paginate";
 
 const Section = (props) => {
   const date = props.section.registerDate.toString().substring(0, 10);
@@ -29,13 +30,11 @@ class SectionsList extends Component {
   constructor(props) {
     super(props);
 
-    this.SectionList = this.SectionList.bind(this);
-
-    this.state = { sections: [] };
+    this.state = { sections: [], pageSize: 2, currentPage: 1 };
   }
 
   handlePageChange = (page) => {
-    console.log(page);
+    this.setState({ currentPage: page });
   };
   componentDidMount() {
     axios
@@ -48,26 +47,16 @@ class SectionsList extends Component {
       });
   }
 
-  SectionList() {
-    return this.state.sections.map((currentSection) => {
-      return (
-        <Section
-          section={currentSection}
-          key={currentSection._id}
-          sectionId={currentSection._id}
-        />
-      );
-    });
-  }
-
   render() {
+    const { sections, pageSize, currentPage } = this.state;
+    const mySections = paginate(sections, currentPage, pageSize);
     return (
       <div className="container sectionTbl">
         <h2>
           <span className="badge badge-info ">مدیریت بخش ها</span>
         </h2>
         <br />
-        <table className="table table-striped">
+        <table className="table table-striped sectionTable">
           <thead>
             <tr>
               <th>عنوان</th>
@@ -77,11 +66,23 @@ class SectionsList extends Component {
               <th>ویرایش</th>
             </tr>
           </thead>
-          <tbody>{this.SectionList()}</tbody>
+          <tbody>
+            {mySections.map((currentSection) => {
+              return (
+                <Section
+                  section={currentSection}
+                  key={currentSection._id}
+                  sectionId={currentSection._id}
+                />
+              );
+            })}
+          </tbody>
         </table>
+
         <Pagination
-          itemsCount={this.state.sections.length}
-          pageSize={10}
+          itemsCount={sections.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
           onPageChange={this.handlePageChange}
         />
       </div>

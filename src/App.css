@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   backface-visibility: hidden;
   font-family: Sahel;
+  position: relative;
 }
 
 .enter {

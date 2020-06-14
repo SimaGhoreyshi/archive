@@ -6,6 +6,9 @@
 .badge {
   padding: 1%;
 }
+.table {
+  direction: rtl;
+}
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: rgba(150, 193, 241, 0.418);

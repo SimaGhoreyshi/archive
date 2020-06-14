@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./students-list.css";
 
+import Pagination from "../../components/pagination";
+import { paginate } from "../../utils/paginate";
+
 const Student = (props) => {
   ////   const date = props.student.registerDate.toString();
 
@@ -71,6 +74,8 @@ class StudentsList extends Component {
       searchFund: "انتخاب نشده", //dore
       searchQuota: "انتخاب نشده", //sahmiye
       searchStatus: "انتخاب نشده", //vaz'iate
+      pageSize: 2,
+      currentPage: 1,
     };
   }
 
@@ -87,8 +92,6 @@ class StudentsList extends Component {
 
   StudentList() {
     let allStudents = this.state.students;
-    console.log(this.state.searchField);
-    console.log(this.state.searchKey);
     let studentsList = null;
 
     if (
@@ -136,7 +139,14 @@ class StudentsList extends Component {
       });
   }
 
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
   render() {
+    const studentsList = this.StudentList();
+    const { pageSize, currentPage } = this.state;
+    const myStudents = paginate(studentsList, currentPage, pageSize);
     return (
       <div className="studentTbl">
         <div className="searchBar">
@@ -540,8 +550,15 @@ class StudentsList extends Component {
               <th> </th>
             </tr>
           </thead>
-          <tbody>{this.StudentList()}</tbody>
+          <tbody>{myStudents}</tbody>
         </table>
+        <Pagination
+          className="pagination"
+          itemsCount={studentsList.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={this.handlePageChange}
+        />
       </div>
     );
   }

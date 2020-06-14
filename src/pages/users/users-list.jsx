@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./users-list.css";
+import Pagination from "../../components/pagination";
+import { paginate } from "../../utils/paginate";
 
 const User = (props) => {
   const date = props.user.registerDate.toString();
@@ -48,11 +50,13 @@ class UsersList extends Component {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
-    this.UserList = this.UserList.bind(this);
 
-    this.state = { users: [] };
+    this.state = { users: [], pageSize: 2, currentPage: 1 };
   }
 
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
   componentDidMount() {
     axios
       .get("http://localhost:5000/users")
@@ -64,18 +68,6 @@ class UsersList extends Component {
       });
   }
 
-  UserList() {
-    return this.state.users.map((currentUser) => {
-      return (
-        <User
-          user={currentUser}
-          handleDelete={this.handleDelete}
-          key={currentUser._id}
-          userId={currentUser._id}
-        />
-      );
-    });
-  }
   handleDelete(id) {
     axios
       .delete("http://localhost:5000/users/" + id)
@@ -83,6 +75,8 @@ class UsersList extends Component {
     this.setState({ users: this.state.users.filter((u) => u._id !== id) });
   }
   render() {
+    const { users, pageSize, currentPage } = this.state;
+    const myUsers = paginate(users, currentPage, pageSize);
     return (
       <div className="container userTbl">
         <h2>
@@ -99,8 +93,25 @@ class UsersList extends Component {
               <th>ویرایش</th>
             </tr>
           </thead>
-          <tbody>{this.UserList()}</tbody>
+          <tbody>
+            {myUsers.map((currentUser) => {
+              return (
+                <User
+                  user={currentUser}
+                  handleDelete={this.handleDelete}
+                  key={currentUser._id}
+                  userId={currentUser._id}
+                />
+              );
+            })}
+          </tbody>
         </table>
+        <Pagination
+          itemsCount={users.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={this.handlePageChange}
+        />
       </div>
     );
   }

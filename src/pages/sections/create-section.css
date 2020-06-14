@@ -1,11 +1,8 @@
 * {
-  direction: rtl;
   text-align: right;
   font-family: Sahel;
 }
-.form-control {
-  direction: rtl;
-}
+
 .input-group {
   width: 30vw;
   margin: 1%;
@@ -14,10 +11,6 @@
   margin-left: 2%;
 }
 
-* {
-  direction: rtl;
-  text-align: right;
-}
 input[type="number"] {
   border: 1px solid dimgray;
   color: #fff;
@@ -40,6 +33,7 @@ label {
 }
 
 .form {
+  direction: rtl;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   width: 50vw;

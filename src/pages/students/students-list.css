@@ -3,17 +3,21 @@
   background: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
   width: min-content;
-  padding: 1% 5%;
+  padding: 1% 2%;
   margin-left: auto;
   margin-right: auto;
+}
+.pagination {
+  direction: ltr;
 }
 .myTble {
   display: inline-table;
   margin-left: auto;
   margin-right: auto;
-  width: 80vw;
+  width: 90vw;
 }
 .searchBar {
+  float: right;
   border-radius: 10px;
   width: 100%;
 }
@@ -23,9 +27,14 @@
 .dropdown-item {
   margin: 1% 1%;
 }
+
 .form-control {
   margin: 0.5% 1%;
   width: 200px;
+}
+.row {
+  direction: rtl;
+  width: 100%;
 }
 .badge {
   padding: 1%;

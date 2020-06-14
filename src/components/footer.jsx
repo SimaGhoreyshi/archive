@@ -6,8 +6,10 @@ class Footer extends Component {
     return (
       <div
         style={{
-          position: "fixed",
           bottom: "0",
+          padding: "0",
+          position: "absolute",
+          margin: "0",
           width: "100vw",
           backgroundColor: "rgba(44, 44, 44, 0.651)",
           color: "#fff",

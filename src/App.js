@@ -85,7 +85,6 @@ class App extends Component {
         validation = true;
         this.setState({ authenticatedUser: users[0] });
         if (validation) break;
-        this.forceUpdate();
       } else {
         validation = false;
       }
