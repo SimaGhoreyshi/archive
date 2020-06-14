@@ -1,3 +1,5 @@
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
 .userTbl {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
@@ -20,4 +22,38 @@
 .table-striped > thead {
   background-color: rgba(45, 149, 235, 0.521);
   color: black;
+}
+
+.btnUserToggle {
+  position: relative;
+  background: rgba(255, 255, 255, 0.808);
+  width: 30px;
+  margin: 0;
+}
+.spanUserToggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+i {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 18px;
+}
+.iUserToggle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 218, 98);
+  text-shadow: 0 0 15px #fff;
+  font-size: 20px;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:checked ~ .iUserToggle {
+  color: tomato;
 }

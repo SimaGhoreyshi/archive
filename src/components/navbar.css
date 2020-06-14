@@ -164,3 +164,9 @@ nav ul li {
   transform-origin: left;
   transform: scaleY(1);
 }
+ul .dropdown:hover > .dropdown-menu {
+  display: block;
+}
+ul .dropdown > .dropdown-menu {
+  display: none;
+}

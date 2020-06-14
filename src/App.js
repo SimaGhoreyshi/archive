@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 
-import Areas from "./pages/areas";
+import Zones from "./pages/zones";
 import UserInfo from "./pages/user-info/user-info";
 import Dashboard from "./pages/dashboard";
 
@@ -171,7 +171,7 @@ class App extends Component {
               <Route path="/sections/edit/:id" component={EditSection} />
               <Route path="/sections" component={SectionsList} />
 
-              <Route path="/areas" component={Areas} />
+              <Route path="/areas" component={Zones} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/reports" component={Reports} />
 

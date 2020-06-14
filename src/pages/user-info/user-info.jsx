@@ -12,7 +12,8 @@ class UserInfo extends Component {
     return (
       <div className="container form">
         <h2 className="welcome">
-          کاربر {firstName + " " + lastName} خوش آمدید
+          کاربر <span className="name">{firstName + " " + lastName}</span> خوش
+          آمدید
         </h2>
 
         <br />

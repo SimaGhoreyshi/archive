@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./dashboard.css";
 
-class Areas extends Component {
+class Zones extends Component {
   state = {};
   render() {
     return (
-      <div className="container">
+      <div className="container" style={{ marginTop: "5%" }}>
         <Link
           className="card hover-pulse my-card"
           to="#"
@@ -77,4 +77,4 @@ class Areas extends Component {
   }
 }
 
-export default Areas;
+export default Zones;

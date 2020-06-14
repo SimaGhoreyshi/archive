@@ -33,13 +33,11 @@ const User = (props) => {
         >
           <i className="fas fa-pen"></i>
         </Link>{" "}
-        <Link
-          className="btn btn-success/danger btn-sm"
-          to={"/users/activeToggle/" + props.user._id}
-        >
-          <i className="fas fa-user-slash"></i>
-          <i className="fas fa-user"></i>
-        </Link>
+        <label className="btn btn-sm btnUserToggle">
+          <input type="checkbox" />
+          <span className="spanUserToggle"></span>
+          <i className="fa fa-user iUserToggle"></i>
+        </label>
       </td>
     </tr>
   );
