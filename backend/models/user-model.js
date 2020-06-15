@@ -36,6 +36,9 @@ const usersSchema = new Schema(
     },
 
     profilePic: {
+      type: Buffer,
+    },
+    profilePicType: {
       type: String,
     },
   },
@@ -43,6 +46,14 @@ const usersSchema = new Schema(
     timestamps: true,
   }
 );
+
+usersSchema.virtual("profilePicPath").get(function () {
+  if (this.profilePic != null && this.profilePicType != null) {
+    return `data:${
+      this.profilePicType
+    };charset=utf-8;base64,${this.profilePic.toString("base64")}`;
+  }
+});
 
 const User = mongoose.model("User", usersSchema);
 module.exports = User;

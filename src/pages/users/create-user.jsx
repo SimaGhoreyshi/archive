@@ -80,7 +80,6 @@ class CreateUser extends Component {
       lastName: this.state.lastName,
       phoneNumber: this.state.phoneNumber,
       role: this.state.role,
-      profilePic: this.state.profilePic,
     };
 
     console.log(user);
@@ -99,7 +98,7 @@ class CreateUser extends Component {
           <span className="badge badge-info ">ایجاد اپراتور جدید</span>
         </h2>
         <br />
-        <form onSubmit={this.onSubmit} encType="multipart/form-data">
+        <form onSubmit={this.onSubmit}>
           <div className="row">
             <div className="input-group col">
               <input
@@ -161,7 +160,7 @@ class CreateUser extends Component {
                   />
                   <input
                     type="file"
-                    className="form-control-file"
+                    className="filepond"
                     name="profilePic"
                     onChangeCapture={this.onChangeProfilePic}
                   />

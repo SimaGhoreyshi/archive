@@ -27,7 +27,7 @@ import Reports from "./pages/reports";
 
 import axios from "axios";
 
-let validation = false;
+let validation = true;
 
 class App extends Component {
   constructor() {
