@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./create-user.css";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+toast.configure();
 
 class CreateUser extends Component {
   constructor(props) {
@@ -80,6 +83,7 @@ class CreateUser extends Component {
       lastName: this.state.lastName,
       phoneNumber: this.state.phoneNumber,
       role: this.state.role,
+      profilePic: this.state.profilePic,
     };
 
     console.log(user);
@@ -88,7 +92,9 @@ class CreateUser extends Component {
       .post("http://localhost:5000/users/add", user)
       .then((res) => console.log(res.data));
 
-    //window.location = "/users";
+    toast.success("اپراتور اضافه گردید.");
+
+    window.location = "/users";
   }
 
   render() {
@@ -98,7 +104,7 @@ class CreateUser extends Component {
           <span className="badge badge-info ">ایجاد اپراتور جدید</span>
         </h2>
         <br />
-        <form onSubmit={this.onSubmit}>
+        <form method="POST" onSubmit={this.onSubmit}>
           <div className="row">
             <div className="input-group col">
               <input
@@ -160,8 +166,9 @@ class CreateUser extends Component {
                   />
                   <input
                     type="file"
-                    className="filepond"
+                    className="form-control-file"
                     name="profilePic"
+                    accept="image/png, image/jpg, image/jpeg, image/gif"
                     onChangeCapture={this.onChangeProfilePic}
                   />
                   <p>عکس پروفایل</p>

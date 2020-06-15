@@ -79,7 +79,7 @@ class EditSection extends Component {
       )
       .then((res) => console.log(res.data));
 
-    //window.location = "/sections";
+    window.location = "/sections";
   }
   render() {
     return (

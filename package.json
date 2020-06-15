@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "bootstrap-toggle": "^2.2.2",
+    "express-fileupload": "^1.1.7-alpha.3",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
@@ -17,8 +18,9 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.5",
     "react-transition-group": "^4.4.1",
-    "toastify": "^2.0.0"
+    "toastify": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

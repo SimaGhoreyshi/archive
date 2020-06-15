@@ -49,7 +49,7 @@ router.route("/:id").get((req, res) => {
 
 //POST
 router.route("/add").post(async (req, res) => {
-  console.log(req.file);
+  console.log(req.profilPic);
 
   const email = req.body.email;
   const password = req.body.password;
@@ -67,10 +67,11 @@ router.route("/add").post(async (req, res) => {
     phoneNumber,
     role,
     registerDate,
+    // profilPic,
   });
 
-  saveProfilePic(newUser, req.body.profilePic);
-  console.log(req);
+  // saveProfilePic(newUser, req.body.profilePic);
+  // console.log(req);
 
   newUser
     .save()

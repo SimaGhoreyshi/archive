@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./edit-user.css";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 class EditUser extends Component {
   constructor(props) {
@@ -38,6 +40,8 @@ class EditUser extends Component {
       })
       .catch(function (error) {
         console.log(error);
+
+        toast.success(`خطا: ${error}`);
       });
   }
 
@@ -100,7 +104,9 @@ class EditUser extends Component {
       )
       .then((res) => console.log(res.data));
 
-    //window.location = "/users";
+    toast.success("اپراتور حذف گردید.");
+
+    window.location = "/users";
   }
   render() {
     return (

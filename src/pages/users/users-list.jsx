@@ -4,6 +4,8 @@ import axios from "axios";
 import "./users-list.css";
 import Pagination from "../../components/pagination";
 import { paginate } from "../../utils/paginate";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const User = (props) => {
   const date = props.user.registerDate.toString();
@@ -23,6 +25,7 @@ const User = (props) => {
           className="btn btn-danger btn-sm"
           onClick={() => {
             props.handleDelete(props.user._id);
+            toast.success("اپراتور حذف گردید.");
           }}
         >
           <i className="fas fa-trash-alt"></i>
@@ -34,7 +37,7 @@ const User = (props) => {
           <i className="fas fa-pen"></i>
         </Link>{" "}
         <label className="btn btn-sm btnUserToggle">
-          <input type="checkbox" />
+          <input type="checkbox" className="userToggleCheckBox" />
           <span className="spanUserToggle"></span>
           <i className="fa fa-user iUserToggle"></i>
         </label>
@@ -63,6 +66,7 @@ class UsersList extends Component {
       })
       .catch((err) => {
         console.log(err);
+        toast.error(`خطایی رخ داد: ${err}`);
       });
   }
 

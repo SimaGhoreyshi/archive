@@ -1,6 +1,9 @@
 * {
   text-align: right;
 }
+body {
+  overflow: hidden;
+}
 input[type="number"] {
   border: 1px solid dimgray;
   background: rgba(255, 255, 255, 0.5);

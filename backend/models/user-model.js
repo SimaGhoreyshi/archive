@@ -35,25 +35,25 @@ const usersSchema = new Schema(
       required: true,
     },
 
-    profilePic: {
-      type: Buffer,
-    },
-    profilePicType: {
-      type: String,
-    },
+    // profilePic: {
+    //   type: Buffer,
+    // },
+    // profilePicType: {
+    //   type: String,
+    // },
   },
   {
     timestamps: true,
   }
 );
 
-usersSchema.virtual("profilePicPath").get(function () {
-  if (this.profilePic != null && this.profilePicType != null) {
-    return `data:${
-      this.profilePicType
-    };charset=utf-8;base64,${this.profilePic.toString("base64")}`;
-  }
-});
+// usersSchema.virtual("profilePicPath").get(function () {
+//   if (this.profilePic != null && this.profilePicType != null) {
+//     return `data:${
+//       this.profilePicType
+//     };charset=utf-8;base64,${this.profilePic.toString("base64")}`;
+//   }
+// });
 
 const User = mongoose.model("User", usersSchema);
 module.exports = User;

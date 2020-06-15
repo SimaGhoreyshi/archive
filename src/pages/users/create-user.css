@@ -1,6 +1,12 @@
 * {
   text-align: right;
 }
+body {
+  overflow: hidden;
+}
+input[type="checkbox"] {
+  display: inline-block;
+}
 input[type="number"] {
   border: 1px solid dimgray;
   color: #fff;

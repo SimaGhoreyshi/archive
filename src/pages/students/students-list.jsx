@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./students-list.css";
-
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Pagination from "../../components/pagination";
 import { paginate } from "../../utils/paginate";
 
+toast.configure();
 const Student = (props) => {
   ////   const date = props.student.registerDate.toString();
 
@@ -136,6 +138,8 @@ class StudentsList extends Component {
       })
       .catch((err) => {
         console.log(err);
+
+        toast.success(`خطا: ${err}`);
       });
   }
 

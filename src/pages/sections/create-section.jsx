@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./create-section.css";
 
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 class CreateSection extends Component {
   constructor(props) {
     super(props);
@@ -68,10 +71,12 @@ class CreateSection extends Component {
 
     axios
       .post("http://localhost:5000/sections/add", section)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        toast.success("بخش جدید اضافه گردید");
+      })
       .catch((err) => console.log(err));
 
-    //window.location = "/sections";
+    window.location = "/sections";
   }
 
   render() {

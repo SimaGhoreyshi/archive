@@ -1,5 +1,7 @@
 @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
-
+body {
+  overflow: hidden;
+}
 .userTbl {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
@@ -46,14 +48,14 @@ i {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(0, 218, 98);
+  color: rgb(8, 175, 83);
   text-shadow: 0 0 15px #fff;
   font-size: 20px;
 }
-input[type="checkbox"] {
+.userToggleCheckBox {
   -webkit-appearance: none;
 }
 
-input[type="checkbox"]:checked ~ .iUserToggle {
+.userToggleCheckBox:checked ~ .iUserToggle {
   color: tomato;
 }
