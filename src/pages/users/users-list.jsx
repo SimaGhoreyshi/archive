@@ -52,7 +52,7 @@ class UsersList extends Component {
 
     this.handleDelete = this.handleDelete.bind(this);
 
-    this.state = { users: [], pageSize: 2, currentPage: 1 };
+    this.state = { users: [], pageSize: 5, currentPage: 1 };
   }
 
   handlePageChange = (page) => {
@@ -74,8 +74,12 @@ class UsersList extends Component {
     axios
       .delete("http://localhost:5000/users/" + id)
       .then((res) => console.log(res.data));
-    this.setState({ users: this.state.users.filter((u) => u._id !== id) });
+    this.setState({
+      currentPage: 1,
+      users: this.state.users.filter((u) => u._id !== id),
+    });
   }
+
   render() {
     const { users, pageSize, currentPage } = this.state;
     const myUsers = paginate(users, currentPage, pageSize);

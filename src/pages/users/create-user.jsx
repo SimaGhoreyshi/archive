@@ -3,7 +3,6 @@ import axios from "axios";
 import "./create-user.css";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-toast.configure();
 
 class CreateUser extends Component {
   constructor(props) {
@@ -11,7 +10,8 @@ class CreateUser extends Component {
 
     this.state = {
       email: "",
-      password: "",
+      password: null,
+      passwordRep: null,
       firstName: "",
       lastName: "",
       phoneNumber: 0,
@@ -22,6 +22,7 @@ class CreateUser extends Component {
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangePasswordRep = this.onChangePasswordRep.bind(this);
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeLastName = this.onChangeLastName.bind(this);
     this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
@@ -39,6 +40,12 @@ class CreateUser extends Component {
   onChangePassword(e) {
     this.setState({
       password: e.target.value,
+    });
+  }
+
+  onChangePasswordRep(e) {
+    this.setState({
+      passwordRep: e.target.value,
     });
   }
 
@@ -68,9 +75,8 @@ class CreateUser extends Component {
 
   onChangeProfilePic(e) {
     this.setState({
-      profilePic: URL.createObjectURL(e.target.files[0]),
+      profilePic: e.target.files[0],
     });
-    console.log(e.target.files[0]);
   }
 
   onSubmit(e) {
@@ -85,26 +91,24 @@ class CreateUser extends Component {
       role: this.state.role,
       profilePic: this.state.profilePic,
     };
-
-    console.log(user);
-
     axios
       .post("http://localhost:5000/users/add", user)
       .then((res) => console.log(res.data));
-
     toast.success("اپراتور اضافه گردید.");
+    window.history.back();
 
-    window.location = "/users";
+    //window.location = "/users";
   }
 
   render() {
+    console.log(this.state.profilePic);
     return (
       <div className="container form">
         <h2>
           <span className="badge badge-info ">ایجاد اپراتور جدید</span>
         </h2>
         <br />
-        <form method="POST" onSubmit={this.onSubmit}>
+        <form encType="multipart/form-data" action="/upload">
           <div className="row">
             <div className="input-group col">
               <input
@@ -173,6 +177,7 @@ class CreateUser extends Component {
                   />
                   <p>عکس پروفایل</p>
                 </div>
+                {console.log(this.state.profilePic)}
               </div>
             </div>
           </div>
@@ -194,6 +199,8 @@ class CreateUser extends Component {
                 className="form-control"
                 placeholder="تکرار کلمه عبور"
                 aria-label="Password"
+                value={this.state.passwordRep}
+                onChange={this.onChangePasswordRep}
               />
             </div>
           </div>
@@ -208,7 +215,15 @@ class CreateUser extends Component {
           </div>
           <br />
           <br />
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={
+              this.state.password !== this.state.passwordRep
+                ? toast.error("تکرار کلمه عبور نادرست است")
+                : this.onSubmit
+            }
+          >
             تایید
           </button>
         </form>

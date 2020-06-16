@@ -35,9 +35,9 @@ const usersSchema = new Schema(
       required: true,
     },
 
-    // profilePic: {
-    //   type: Buffer,
-    // },
+    profilePic: {
+      type: String,
+    },
     // profilePicType: {
     //   type: String,
     // },

@@ -7,7 +7,7 @@ class UserInfo extends Component {
     const firstName = this.props.firstName;
     const lastName = this.props.lastName;
     const phoneNumber = this.props.phoneNumber;
-    const profilePic = "https://image.flaticon.com/icons/svg/1738/1738691.svg";
+    const profilePic = this.props.profilePic;
 
     return (
       <div className="container form">

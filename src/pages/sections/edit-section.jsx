@@ -78,8 +78,8 @@ class EditSection extends Component {
         user
       )
       .then((res) => console.log(res.data));
-
-    window.location = "/sections";
+    window.history.back();
+    //window.location = "/sections";
   }
   render() {
     return (

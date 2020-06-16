@@ -1,37 +1,40 @@
 const router = require("express").Router();
 let User = require("../models/user-model");
-// const multer = require("multer");
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "./uploads/");
-//   },
-//   filename: () => {
-//     cb(null, new Date().toISOString() + file.originalname);
-//   },
-// });
-// fileFilter = (req, file, cb) => {
-//   if (
-//     file.mimetype === "image/jpeg" ||
-//     file.mimetype === "image/png" ||
-//     file.mimetype === "image/gif"
-//   ) {
-//     cb(null, true);
-//   } else {
-//     cb(null, false);
-//   }
-
-//   cb();
-// };
-// const upload = multer({
-//   storage: storage,
-//   limits: {
-//     fileSize: 1024 * 1024 * 20,
-//   },
-//   fileFilter: fileFilter,
-// });
-
+const path = require("path");
+const multer = require("multer");
 const imageMimeTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+//const upload = multer({ dest: "uploads/" });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString().substring(0, 10) + file.originalname);
+  },
+});
+
+fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/gif"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+
+  cb();
+};
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 20,
+  },
+  fileFilter: fileFilter,
+});
 
 //GET
 router.route("/").get((req, res) => {
@@ -48,8 +51,8 @@ router.route("/:id").get((req, res) => {
 });
 
 //POST
-router.route("/add").post(async (req, res) => {
-  console.log(req.profilPic);
+router.route("/add").post(upload.single("profilePic"), async (req, res) => {
+  console.log(req.file);
 
   const email = req.body.email;
   const password = req.body.password;
@@ -58,6 +61,7 @@ router.route("/add").post(async (req, res) => {
   const phoneNumber = Number(req.body.phoneNumber);
   const role = Boolean(req.body.role);
   const registerDate = Date(req.body.date);
+  const profilePic = req.file.path;
 
   const newUser = new User({
     email,
@@ -67,11 +71,11 @@ router.route("/add").post(async (req, res) => {
     phoneNumber,
     role,
     registerDate,
+    profilePic,
     // profilPic,
   });
 
   // saveProfilePic(newUser, req.body.profilePic);
-  // console.log(req);
 
   newUser
     .save()
@@ -96,8 +100,6 @@ router.route("/edit/:id").post((req, res) => {
       user.phoneNumber = Number(req.body.phoneNumber);
       user.role = Boolean(req.body.role);
 
-      console.log(user);
-
       user
         .save()
         .then(() => res.json("User updated!"))
@@ -106,15 +108,15 @@ router.route("/edit/:id").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-function saveProfilePic(newUser, profilePic) {
-  console.log(profilPic);
+// function saveProfilePic(newUser, profilePic) {
+//   console.log(profilPic);
 
-  if (profilePic === null) return;
-  const profilePicture = JSON.parse(profilePic);
-  if (profilePicture !== null && imageMimeTypes.includes(profilePic.type)) {
-    newUser.profilePic = new Buffer.from(profilePic.data, "base64");
-    newUser.profilePicType = profilePic.type;
-  }
-}
+//   if (profilePic === null) return;
+//   const profilePicture = JSON.parse(profilePic);
+//   if (profilePicture !== null && imageMimeTypes.includes(profilePic.type)) {
+//     newUser.profilePic = new Buffer.from(profilePic.data, "base64");
+//     newUser.profilePicType = profilePic.type;
+//   }
+// }
 
 module.exports = router;

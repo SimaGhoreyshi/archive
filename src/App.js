@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import { Route, Redirect, Switch } from "react-router-dom";
 
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -27,7 +30,7 @@ import Reports from "./pages/reports";
 
 import axios from "axios";
 
-let validation = true;
+let validation = false;
 
 class App extends Component {
   constructor() {
@@ -86,12 +89,13 @@ class App extends Component {
           password === this.state.users[i].password
         ) {
           validation = true;
-          this.setState({ authenticatedUser: users[0] });
+          this.setState({ authenticatedUser: users[i] });
           if (validation) break;
         } else {
           validation = false;
         }
       }
+    if (!validation) toast.error("ایمیل یا کلمه عبور نادرست است.");
   };
   showPassword() {
     if (this.state.passwordType) this.setState({ passwordType: false });
@@ -99,8 +103,6 @@ class App extends Component {
   }
   render() {
     if (validation === false) {
-      console.log(this.state.emailError);
-
       return (
         <div className="loginBox">
           <form className="loginForm" onSubmit={this.onSubmitLogin}>
@@ -180,8 +182,11 @@ class App extends Component {
                     lastName={this.state.authenticatedUser.lastName}
                     phoneNumber={this.state.authenticatedUser.phoneNumber}
                     profilePic={
-                      "https://image.flaticon.com/icons/svg/1738/1738691.svg"
+                      this.state.authenticatedUser.profilePic === undefined
+                        ? "https://image.flaticon.com/icons/svg/1738/1738691.svg"
+                        : this.state.authenticatedUser.profilePic
                     }
+                    {...console.log(this.state.authenticatedUser.profilePic)}
                   />
                 )}
               />
@@ -199,22 +204,6 @@ class App extends Component {
               <Route path="/areas" component={Zones} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/reports" component={Reports} />
-
-              <Route
-                path="/"
-                render={() => (
-                  <UserInfo
-                    email={this.state.authenticatedUser.email}
-                    firstName={this.state.authenticatedUser.firstName}
-                    lastName={this.state.authenticatedUser.lastName}
-                    phoneNumber={this.state.authenticatedUser.phoneNumber}
-                    profilePic={
-                      "https://image.flaticon.com/icons/svg/1738/1738691.svg"
-                    }
-                  />
-                )}
-              />
-              <Redirect exact from="/" to="/user-info" />
               <Redirect exact to="/not-found" />
             </Switch>
           </div>

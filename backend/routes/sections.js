@@ -42,8 +42,6 @@ router.route("/edit/:id").post((req, res) => {
       section.managerName = req.body.managerName;
       section.phoneNumber = Number(req.body.phoneNumber);
 
-      console.log(section);
-
       section
         .save()
         .then(() => res.json("Section updated!"))

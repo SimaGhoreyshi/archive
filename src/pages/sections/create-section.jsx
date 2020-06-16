@@ -75,8 +75,8 @@ class CreateSection extends Component {
         toast.success("بخش جدید اضافه گردید");
       })
       .catch((err) => console.log(err));
-
-    window.location = "/sections";
+    window.history.back();
+    //window.location = "/sections";
   }
 
   render() {

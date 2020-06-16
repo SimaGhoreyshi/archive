@@ -1,5 +1,4 @@
 const express = require("express");
-// const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -8,7 +7,6 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// app.use(fileUpload());
 app.use(cors());
 app.use(express.json()); //to parse json
 
@@ -28,7 +26,7 @@ const studentsRouter = require("./routes/students");
 const sectionsRouter = require("./routes/sections");
 const fileUpload = require("express-fileupload");
 
-app.use("/uploads", express.static("uploades"));
+app.use("/uploads", express.static("uploads"));
 app.use("/users", usersRouter);
 app.use("/students", studentsRouter);
 app.use("/sections", sectionsRouter);

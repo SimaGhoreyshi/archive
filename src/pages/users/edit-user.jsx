@@ -105,8 +105,8 @@ class EditUser extends Component {
       .then((res) => console.log(res.data));
 
     toast.success("اپراتور حذف گردید.");
-
-    window.location = "/users";
+    window.history.back();
+    //window.location = "/users";
   }
   render() {
     return (
